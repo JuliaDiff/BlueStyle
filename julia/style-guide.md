@@ -316,18 +316,25 @@ Comments should be separated by at least two spaces from the expression and have
 
 ### Documentation
 
-It is strongly recommended that all modules, types and methods should have doc strings of some kind as described in the Julia documentation [here](http://docs.julialang.org/en/release-0.4/manual/documentation/?highlight=docstrings).
-That being said, we only require that all exported methods be documented with the template provided below.
+It is strongly recommended that all modules, types and methods should have [docstrings](http://docs.julialang.org/en/latest/manual/documentation.html).
+That being said, we only require that all exported methods be documented with the template 
+provided below. Note that sections that don't apply like (for example "Throws") can be
+excluded when they do not apply or are overly verbose.
 
 Type Template (suggested):
 
 ```julia
-"`MyArray{T,N}`: is my super awesome array wrapper!"
+"""
+    MyArray{T,N}
+
+My super awesome array wrapper!
+
+# Fields
+* `data::AbstractArray{T,N}`: stores the array being wrapped
+* `metadata::Dict`: stores metadata about the array
+"""
 type MyArray{T,N} <: AbstractArray{T,N}
-    "data::AbstractArray{T,N} - stores the array being wrapped"
     data::AbstractArray{T,N}
-    
-    "metadata::Dict - stores metadata about the array"
     metadata::Dict
 end
 ```
@@ -336,24 +343,27 @@ Method Template (only required for exported methods):
 
 ```julia
 """
-`mysearch{T}(array::MyArray{T}, val::T)`: searches the 
-`array` for the `val`. For some reason we don't want to use julia's 
+    mysearch{T}(array::MyArray{T}, val::T) -> Int
+
+Searches the `array` for the `val`. For some reason we don't want to use Julia's
 builtin search :) 
 
-Args:
-- `array`: the array to search
-- `val`: the value to search for
+# Arguments
+* `array::MyArray{T}`: the array to search
+* `val::T`: the value to search for
     
-Returns:
-- `Int`: the index where `val` is located in the `array`
+# Returns
+* `Int`: the index where `val` is located in the `array`
 
-Throws:
-- NotFoundError: I guess we could throw an error if `val` isn't found.
+# Throws
+* NotFoundError: I guess we could throw an error if `val` isn't found.
 """
 function mysearch{T}(array::AbstractArray{T}, val::T)
-...
+    ...
 end
 ```
+
+For additional details on documenting in Julia see the [official documentation](http://docs.julialang.org/en/latest/manual/documentation.html).
 
 ### Naming
 
