@@ -63,7 +63,11 @@ To ensure that Vim recognizes Julia files you can manually have it check for the
 ### Atom Settings
 
 Atom defaults preferred line length to 80 characters. We want that at 92 for julia.  
-To change it, go Atom -> Preferences -> Find preferred line length and change it to 92.
+To change it:
+
+1. Go to Atom -> Preferences -> Packages.
+2. Search for the "language-julia" package and open the settings for it.
+3. Find preferred line length (under "Julia Grammar") and change it to 92.
 
 ## Code Formatting
 
