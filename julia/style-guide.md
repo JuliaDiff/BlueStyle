@@ -60,6 +60,11 @@ au FileType julia setlocal colorcolumn=93 " Highlights column 93 to help maintai
 By default, Vim seems to guess that `.jl` files are written in Lisp.
 To ensure that Vim recognizes Julia files you can manually have it check for the `.jl` extension, but a better solution is to install [Julia-Vim](https://github.com/JuliaLang/julia-vim), which also includes proper syntax highlighting and a few cool other features.
 
+### Atom Settings
+
+Atom defaults preferred line length to 80 characters. We want that at 92 for julia.  
+To change it, go Atom -> Preferences -> Find preferred line length and change it to 92.
+
 ## Code Formatting
 
 ### Method Definitions
