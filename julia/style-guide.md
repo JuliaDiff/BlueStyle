@@ -71,6 +71,15 @@ To change it:
 
 ## Code Formatting
 
+### Function Naming
+
+Names of functions should describe an action or property irrespective of the type of the argument; the argument's type provides this information instead.
+For example, `submit_bid(bid)` should be `submit(bid::Bid)` and `bids_in_batch(batch)` should be `bids(batch::Batch)`.
+
+Names of functions should usually be limited to one or two lowercase words separated by underscores.
+If you find it hard to shorten your function names without losing information, you may need to factor more information into the type signature or split the function's responsibilities into two or more functions.
+In general, shorter functions with clearly-defined responsibilities are preferred.
+
 ### Method Definitions
 
 Only use short-form function definitions when they fit on a single line:
@@ -116,6 +125,42 @@ end
 # No:
 function Foo(x, y)
    new(x, y)
+end
+```
+
+Functions definitions with parameter lines which exceed 92-characters should seperate each parameter by a newline and indent by one-level:
+
+```julia
+# Yes:
+function foobar(
+    df::DataFrame,
+    id::Symbol,
+    variable::Symbol,
+    value::AbstractString,
+    prefix::AbstractString="",
+)
+    # code
+end
+
+# No:
+function foobar(df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString, prefix::AbstractString="")
+    # code
+end
+# No:
+function foobar(df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString,
+    prefix::AbstractString="")
+
+    # code
+end
+# No:
+function foobar(
+        df::DataFrame,
+        id::Symbol,
+        variable::Symbol,
+        value::AbstractString,
+        prefix::AbstractString="",
+    )
+    # code
 end
 ```
 
@@ -298,6 +343,68 @@ Avoid extraneous whitespace in the following situations:
     )
     ```
 
+### Type annotation
+
+Annotations for function defintions should be as general as possible.
+
+```julia
+# Yes:
+splicer(arr::AbstractArray, step::Integer) = arr[1:step:end]
+
+# No:
+splicer(arr::Array{Int}, step::Int) = arr[1:step:end]
+```
+
+Using as generic types as possible allows for a variety of inputs and allows you code to be more general:
+
+```julia
+julia> splicer(1:10, 2)
+1:2:9
+
+julia> splicer([3.0,5,7,9], 2)
+2-element Array{Float64,1}:
+ 3.0
+ 7.0
+```
+
+Annotations on type fields need to be given a little more thought. Using specific concrete types for fields allows Julia to optimize the memory layout but can reduce flexibility.
+For example lets take a look at the type `MySubString` which allows us to work with a subsection of a string without having to copy the data:
+
+```julia
+type MySubString <: AbstractString
+    string::AbstractString
+    offset::Integer
+    endof::Integer
+end
+```
+
+We want the type to be able to hold any subtype of `AbstractString` but do we need to have `offset` and `endof` to be able to hold any subtype of `Integer`? Really, no we should be ok to use `Int` here (`Int64` on 64-bit systems and `Int32` on 32-bit systems)
+Note that even though we're using `Int` a user can still do things like `MySubString("foobar", 0x4, 0x6);` as provided `offset` and `endof` values will be converted to an `Int`.
+
+```julia
+type MySubString <: AbstractString
+    string::AbstractString
+    offset::Int
+    endof::Int
+end
+```
+
+If we truely care about performance there is one more thing we can do by making our type parametric.
+The current definition of `MySubString` allows us to modify the `string` field at any time with any subtype of `AbstractString`.
+Using a parametric type allows to use any subtype of `AbstractString` upon construction but the field type will be set to something concrete (like `String`) and cannot be changed for the lifetime of the instance.
+
+```
+type MySubString{T<:AbstractString} <: AbstractString
+    string::T
+    offset::Integer
+    endof::Integer
+end
+```
+
+Overall, it is best to keep the types general to start with and later optimize the using parametric types.
+Optimizing too early in the code design process can impact your ability to refactor the code early on.
+
+
 ### Comments
 
 Comments should be used to state the intended behaviour of code.
@@ -325,12 +432,27 @@ Comments should be separated by at least two spaces from the expression and have
 
 ### Documentation
 
-It is strongly recommended that all modules, types and methods should have [docstrings](http://docs.julialang.org/en/latest/manual/documentation.html).
-That being said, we only require that all exported methods be documented with the template 
-provided below. Note that sections that don't apply like (for example "Throws") can be
-excluded when they do not apply or are overly verbose.
+It is recommended that most modules, types and methods should have [docstrings](http://docs.julialang.org/en/latest/manual/documentation.html).
+That being said, only exported methods are required to be documented.
+Avoid documenting methods like `==` as the built in docstring for the function already covers the details well. 
 
-Type Template (suggested):
+Docstrings are written in [Markdown](https://en.wikipedia.org/wiki/Markdown) and should be
+concise.
+
+```julia
+"""
+    bar(x[, y])
+
+Compute the Bar index between `x` and `y`. If `y` is missing, compute
+the Bar index between all pairs of columns of `x`.
+"""
+function bar(x, y) ...
+```
+
+When types or methods have lots of parameters it may not be feasible to write a concise docstring.
+In these cases it is recommended you use the templates below. Note if a section doesn't apply or is overly verbose (for example "Throws" if your function doesn't throw an exception) it can be excluded.
+
+Type Template (should be skipped if is redundant with the constructor(s) docstring):
 
 ```julia
 """
@@ -374,14 +496,34 @@ end
 
 For additional details on documenting in Julia see the [official documentation](http://docs.julialang.org/en/latest/manual/documentation.html).
 
-### Naming
+## Test Formatting
 
-Names of functions should describe an action or property irrespective of the type of the argument; the argument's type provides this information instead.
-For example, `submit_bid(bid)` should be `submit(bid::Bid)` and `bids_in_batch(batch)` should be `bids(batch::Batch)`.
+### Testsets
 
-Names of functions should usually be limited to one or two words.
-If you find it hard to shorten your function names without losing information, you may need to factor more information into the type signature or split the function's responsibilities into two or more functions.
-In general, shorter functions with clearly-defined responsibilities are preferred.
+Julia provides [test sets](http://docs.julialang.org/en/stable/stdlib/test/?highlight=testset#working-with-test-sets) which allows developers to group tests into logical groupings.
+Test sets can be nested and ideally packages should only have a single "root" test set.
+It is recommended that the "runtests.jl" file contains the root test set which contains the remainder of the tests:
+
+```julia
+@testset "PkgExtreme" begin
+    include("arithmetic.jl")
+    include("utils.jl")
+end
+```
+
+### Comparisons
+
+Most tests are written in the form `@test x == y`.
+Since the `==` function doesn't take types into account tests like the following are valid: `@test 1.0 == 1`.
+Avoid adding visual noise into test comparisons:
+
+```julia
+# Yes:
+@test value == 0
+
+# No:
+@test value == 0.0
+```
 
 ### Performance and Optimization
 
