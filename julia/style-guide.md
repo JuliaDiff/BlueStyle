@@ -128,7 +128,7 @@ function Foo(x, y)
 end
 ```
 
-Functions definitions with parameter lines which exceed 92-characters should seperate each parameter by a newline and indent by one-level:
+Functions definitions with parameter lines which exceed 92-characters should separate each parameter by a newline and indent by one-level:
 
 ```julia
 # Yes:
@@ -142,7 +142,7 @@ function foobar(
     # code
 end
 
-# No:
+# Ok:
 function foobar(df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString, prefix::AbstractString="")
     # code
 end
