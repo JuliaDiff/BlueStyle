@@ -525,7 +525,7 @@ Avoid adding visual noise into test comparisons:
 @test value == 0.0
 ```
 
-### Performance and Optimization
+## Performance and Optimization
 
 Several of these tips are contained within Julia's [Performance Tips](http://docs.julialang.org/en/latest/manual/performance-tips/).
 
