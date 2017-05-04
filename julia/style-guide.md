@@ -430,6 +430,9 @@ Block comments generally consist of one or more paragraphs built out of complete
 
 Comments should be separated by at least two spaces from the expression and have a single space after the `#`.
 
+When referencing Julia in documentation note that "Julia" refers to the programming language
+while "julia" (typically in backticks, e.g. `julia`) refers to the executable.
+
 ### Documentation
 
 It is recommended that most modules, types and methods should have [docstrings](http://docs.julialang.org/en/latest/manual/documentation.html).
