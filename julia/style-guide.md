@@ -345,7 +345,7 @@ Avoid extraneous whitespace in the following situations:
 
 ### Type annotation
 
-Annotations for function defintions should be as general as possible.
+Annotations for function definitions should be as general as possible.
 
 ```julia
 # Yes:
