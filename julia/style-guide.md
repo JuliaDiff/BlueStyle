@@ -15,7 +15,7 @@ This is [stated best in the PEP8](http://legacy.python.org/dev/peps/pep-0008/#a-
 
 ## Synopsis
 
-Attempt to follow both the [Julia Contribution Guidelines](https://github.com/JuliaLang/julia/blob/master/CONTRIBUTING.md#general-formatting-guidelines-for-julia-code-contributions), the [Julia Style Guide](http://julia.readthedocs.org/en/latest/manual/style-guide/), and this guide.
+Attempt to follow both the [Julia Contribution Guidelines](https://github.com/JuliaLang/julia/blob/master/CONTRIBUTING.md#general-formatting-guidelines-for-julia-code-contributions), the [Julia Style Guide](https://docs.julialang.org/en/latest/manual/style-guide.html), and this guide.
 When convention guidelines conflict this guide takes precedence (known conflicts will be noted in this guide).
 
  *  Use 4 spaces per indentation level, no tabs.
