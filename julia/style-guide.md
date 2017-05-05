@@ -345,7 +345,7 @@ Avoid extraneous whitespace in the following situations:
 
 ### Type annotation
 
-Annotations for function defintions should be as general as possible.
+Annotations for function definitions should be as general as possible.
 
 ```julia
 # Yes:
@@ -429,6 +429,9 @@ If a comment is short, the period at the end can be omitted.
 Block comments generally consist of one or more paragraphs built out of complete sentences, and each sentence should end in a period.
 
 Comments should be separated by at least two spaces from the expression and have a single space after the `#`.
+
+When referencing Julia in documentation note that "Julia" refers to the programming language
+while "julia" (typically in backticks, e.g. `julia`) refers to the executable.
 
 ### Documentation
 
