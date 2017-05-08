@@ -435,9 +435,10 @@ while "julia" (typically in backticks, e.g. `julia`) refers to the executable.
 
 ### Documentation
 
-It is recommended that most modules, types and methods should have [docstrings](http://docs.julialang.org/en/latest/manual/documentation.html).
-That being said, only exported methods are required to be documented.
-Avoid documenting methods like `==` as the built in docstring for the function already covers the details well. 
+It is recommended that most modules, types and functions should have [docstrings](http://docs.julialang.org/en/latest/manual/documentation.html).
+That being said, only exported functions are required to be documented.
+Avoid documenting methods like `==` as the built in docstring for the function already covers the details well.
+Try to document a function and not individual methods where possible as typically all methods will have similar docstrings.
 
 Docstrings are written in [Markdown](https://en.wikipedia.org/wiki/Markdown) and should be
 concise.
@@ -477,7 +478,7 @@ Method Template (only required for exported methods):
 
 ```julia
 """
-    mysearch{T}(array::MyArray{T}, val::T) -> Int
+    mysearch{T}(array::MyArray{T}, val::T; verbose=true) -> Int
 
 Searches the `array` for the `val`. For some reason we don't want to use Julia's
 builtin search :) 
@@ -485,6 +486,9 @@ builtin search :)
 # Arguments
 * `array::MyArray{T}`: the array to search
 * `val::T`: the value to search for
+
+# Keywords
+* `verbose::Bool=true`: print out progress details
     
 # Returns
 * `Int`: the index where `val` is located in the `array`
@@ -495,6 +499,50 @@ builtin search :)
 function mysearch{T}(array::AbstractArray{T}, val::T)
     ...
 end
+```
+
+If your method contains lots of arguments or keywords you may want to exclude them from the
+method signature on the first line and instead use `args...` and/or `kwargs...`
+
+```julia
+"""
+    Manager(args...; kwargs...) -> Manager
+
+A cluster manager which spawns workers.
+
+# Arguments
+* `min_workers::Integer`: The minimum number of workers to spawn or an exception is thrown
+* `max_workers::Integer`: The requested number of worker to spawn
+
+# Keywords
+* `definition::AbstractString`: Name of the job definition to use. Defaults to the definition used within the current instance.
+* `name::AbstractString`: ...
+* `queue::AbstractString`: ...
+"""
+...
+```
+
+Feel free to document multiple methods at the same time if possible
+
+```julia
+"""
+    Manager(max_workers; kwargs...)
+    Manager(min_workers:max_workers; kwargs...)
+    Manager(min_workers, max_workers; kwargs...)
+
+A cluster manager which spawns workers.
+
+# Arguments
+* `min_workers::Int`: The minimum number of workers to spawn or an exception is thrown
+* `max_workers::Int`: The number of requested workers to spawn
+
+# Keywords
+* `definition::AbstractString`: Name of the job definition to use. Defaults to the definition used within the current instance.
+* `name::AbstractString`: ...
+* `queue::AbstractString`: ...
+"""
+Manager
+
 ```
 
 For additional details on documenting in Julia see the [official documentation](http://docs.julialang.org/en/latest/manual/documentation.html).
