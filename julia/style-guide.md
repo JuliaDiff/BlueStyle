@@ -455,6 +455,9 @@ function bar(x, y) ...
 
 When types or methods have lots of parameters it may not be feasible to write a concise docstring.
 In these cases it is recommended you use the templates below. Note if a section doesn't apply or is overly verbose (for example "Throws" if your function doesn't throw an exception) it can be excluded.
+It is recommended that you have a blank line between the headings and the content when the content is of sufficient length.
+Try to be consistent within a docstring whether you use this additional whitespace.
+Note that the additional space is only for reading raw markdown and does not effect the rendered version.
 
 Type Template (should be skipped if is redundant with the constructor(s) docstring):
 
@@ -511,10 +514,12 @@ method signature on the first line and instead use `args...` and/or `kwargs...`
 A cluster manager which spawns workers.
 
 # Arguments
+
 - `min_workers::Integer`: The minimum number of workers to spawn or an exception is thrown
 - `max_workers::Integer`: The requested number of worker to spawn
 
 # Keywords
+
 - `definition::AbstractString`: Name of the job definition to use. Defaults to the definition used within the current instance.
 - `name::AbstractString`: ...
 - `queue::AbstractString`: ...
@@ -533,10 +538,12 @@ Feel free to document multiple methods at the same time if possible
 A cluster manager which spawns workers.
 
 # Arguments
+
 - `min_workers::Int`: The minimum number of workers to spawn or an exception is thrown
 - `max_workers::Int`: The number of requested workers to spawn
 
 # Keywords
+
 - `definition::AbstractString`: Name of the job definition to use. Defaults to the definition used within the current instance.
 - `name::AbstractString`: ...
 - `queue::AbstractString`: ...
