@@ -439,6 +439,7 @@ It is recommended that most modules, types and functions should have [docstrings
 That being said, only exported functions are required to be documented.
 Avoid documenting methods like `==` as the built in docstring for the function already covers the details well.
 Try to document a function and not individual methods where possible as typically all methods will have similar docstrings.
+If you are adding a method to a function which was defined in `Base` or another package only add a docstring if the behaviour of your function deviates from the existing docstring.
 
 Docstrings are written in [Markdown](https://en.wikipedia.org/wiki/Markdown) and should be
 concise.
@@ -474,7 +475,7 @@ type MyArray{T,N} <: AbstractArray{T,N}
 end
 ```
 
-Method Template (only required for exported methods):
+Function Template (only required for exported functions):
 
 ```julia
 """
@@ -519,10 +520,13 @@ A cluster manager which spawns workers.
 * `name::AbstractString`: ...
 * `queue::AbstractString`: ...
 """
-...
+function Manager(...)
+    ...
+end
 ```
 
-Feel free to document multiple methods at the same time if possible
+Feel free to document multiple methods for a function within the same docstring. Be careful
+to only do this for functions you have defined.
 
 ```julia
 """
@@ -541,7 +545,7 @@ A cluster manager which spawns workers.
 * `name::AbstractString`: ...
 * `queue::AbstractString`: ...
 """
-Manager
+function Manager end
 
 ```
 
