@@ -343,6 +343,30 @@ Avoid extraneous whitespace in the following situations:
     )
     ```
 
+* Triple-quotes use the indentation of the lowest indented line (excluding the opening triple-quote). This means the closing triple-quote should be aligned to least indented line in the string. Triple-backticks should also follow this style even though the indentation does not matter for them.
+
+    ````julia
+    Yes:
+    str = """
+        hello
+        world!
+        """
+    str = """
+            hello
+        world!
+        """
+    cmd = ```
+        program
+            --flag value
+            parameter
+        ```
+    No:
+    str = """
+        hello
+        world!
+    """
+    ````
+
 ### Type annotation
 
 Annotations for function definitions should be as general as possible.
