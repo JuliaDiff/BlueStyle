@@ -317,7 +317,8 @@ Avoid extraneous whitespace in the following situations:
     ]
     ```
 
-* Always include the trailing comma when working with expanded arrays, tuples or functions notation. This allows future edits to easily move elements around or add additional elements:
+* Always include the trailing comma when working with expanded arrays, tuples or functions notation. This allows future edits to easily move elements around or add additional elements.
+The trailing comma should be excluded when the notation is only on a single-line:
 
     ```julia
     Yes:
@@ -330,6 +331,7 @@ Avoid extraneous whitespace in the following situations:
         arg1,
         arg2,
     )
+    arr = [1, 2, 3]
 
     No:
     arr = [
@@ -341,6 +343,7 @@ Avoid extraneous whitespace in the following situations:
         arg1,
         arg2
     )
+    arr = [1, 2, 3,]
     ```
 
 * Triple-quotes use the indentation of the lowest indented line (excluding the opening triple-quote). This means the closing triple-quote should be aligned to least indented line in the string. Triple-backticks should also follow this style even though the indentation does not matter for them.
