@@ -470,13 +470,14 @@ If you are adding a method to a function which was defined in `Base` or another 
 
 Docstrings are written in [Markdown](https://en.wikipedia.org/wiki/Markdown) and should be
 concise.
+Docstring lines should be wrapped at 92-characters.
 
 ```julia
 """
     bar(x[, y])
 
-Compute the Bar index between `x` and `y`. If `y` is missing, compute
-the Bar index between all pairs of columns of `x`.
+Compute the Bar index between `x` and `y`. If `y` is missing, compute the Bar index between
+all pairs of columns of `x`.
 """
 function bar(x, y) ...
 ```
@@ -533,7 +534,7 @@ end
 ```
 
 If your method contains lots of arguments or keywords you may want to exclude them from the
-method signature on the first line and instead use `args...` and/or `kwargs...`
+method signature on the first line and instead use `args...` and/or `kwargs...`.
 
 ```julia
 """
@@ -548,7 +549,8 @@ A cluster manager which spawns workers.
 
 # Keywords
 
-- `definition::AbstractString`: Name of the job definition to use. Defaults to the definition used within the current instance.
+- `definition::AbstractString`: Name of the job definition to use. Defaults to the
+    definition used within the current instance.
 - `name::AbstractString`: ...
 - `queue::AbstractString`: ...
 """
@@ -575,12 +577,26 @@ A cluster manager which spawns workers.
 
 # Keywords
 
-- `definition::AbstractString`: Name of the job definition to use. Defaults to the definition used within the current instance.
+- `definition::AbstractString`: Name of the job definition to use. Defaults to the
+    definition used within the current instance.
 - `name::AbstractString`: ...
 - `queue::AbstractString`: ...
 """
 function Manager end
 
+```
+
+If the documentation for bullet-point exceeds 92-characters the line should be wrapped and slightly indented.
+Avoid aligning the text to the `:`.
+
+```julia
+"""
+...
+
+# Keywords
+- `definition::AbstractString`: Name of the job definition to use. Defaults to the
+    definition used within the current instance.
+"""
 ```
 
 For additional details on documenting in Julia see the [official documentation](http://docs.julialang.org/en/latest/manual/documentation.html).
