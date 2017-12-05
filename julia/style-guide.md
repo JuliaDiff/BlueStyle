@@ -8,9 +8,15 @@ These conventions were created from a variety of sources including Python's [PEP
 When adhering to this style it's important to realize that these are guidelines and not rules.
 This is [stated best in the PEP8](http://legacy.python.org/dev/peps/pep-0008/#a-foolish-consistency-is-the-hobgoblin-of-little-minds):
 
->A style guide is about consistency. Consistency with this style guide is important. Consistency within a project is more important. Consistency within one module or function is most important.
+> A style guide is about consistency.
+> Consistency with this style guide is important.
+> Consistency within a project is more important.
+> Consistency within one module or function is most important.
 
-> But most importantly: know when to be inconsistent -- sometimes the style guide just doesn't apply. When in doubt, use your best judgment. Look at other examples and decide what looks best. And don't hesitate to ask!
+> But most importantly: know when to be inconsistent -- sometimes the style guide just doesn't apply.
+> When in doubt, use your best judgment.
+> Look at other examples and decide what looks best.
+> And don't hesitate to ask!
 
 
 ## Synopsis
@@ -18,21 +24,22 @@ This is [stated best in the PEP8](http://legacy.python.org/dev/peps/pep-0008/#a-
 Attempt to follow both the [Julia Contribution Guidelines](https://github.com/JuliaLang/julia/blob/master/CONTRIBUTING.md#general-formatting-guidelines-for-julia-code-contributions), the [Julia Style Guide](https://docs.julialang.org/en/latest/manual/style-guide.html), and this guide.
 When convention guidelines conflict this guide takes precedence (known conflicts will be noted in this guide).
 
- *  Use 4 spaces per indentation level, no tabs.
- *  Try to adhere to a 92 character line length limit.
- *  Use upper camel case convention for [modules](http://julia.readthedocs.org/en/latest/manual/modules/) and [types](http://julia.readthedocs.org/en/latest/manual/types/).
- *  Use lower case with underscores for method names (note: Julia code likes to use lower case without underscores).
- *  Comments are good, try to explain the intentions of the code.
- *  Use whitespace to make the code more readable.
- *  No whitespace at the end of a line (trailing whitespace).
- *  Avoid padding brackets with spaces. ex. `Int64(value)` preferred over `Int64( value )`.
+- Use 4 spaces per indentation level, no tabs.
+- Try to adhere to a 92 character line length limit.
+- Use upper camel case convention for [modules](http://julia.readthedocs.org/en/latest/manual/modules/) and [types](http://julia.readthedocs.org/en/latest/manual/types/).
+- Use lower case with underscores for method names (note: Julia code likes to use lower case without underscores).
+- Comments are good, try to explain the intentions of the code.
+- Use whitespace to make the code more readable.
+- No whitespace at the end of a line (trailing whitespace).
+- Avoid padding brackets with spaces. ex. `Int64(value)` preferred over `Int64( value )`.
 
 ## Editor Configuration
 
 ### Sublime Text Settings
 
 If you are a user of Sublime Text we recommend that you have the following options in your Julia syntax specific settings.
-To modify these settings first open any Julia file (`*.jl`) in Sublime Text. Then navigate to: `Preferences > Settings - More > Syntax Specific - User`
+To modify these settings first open any Julia file (`*.jl`) in Sublime Text.
+Then navigate to: `Preferences > Settings - More > Syntax Specific - User`
 
 ```json
 {
@@ -62,10 +69,10 @@ To ensure that Vim recognizes Julia files you can manually have it check for the
 
 ### Atom Settings
 
-Atom defaults preferred line length to 80 characters. We want that at 92 for julia.  
+Atom defaults preferred line length to 80 characters. We want that at 92 for julia.
 To change it:
 
-1. Go to Atom -> Preferences -> Packages.
+1. Go to `Atom -> Preferences -> Packages`.
 2. Search for the "language-julia" package and open the settings for it.
 3. Find preferred line length (under "Julia Grammar") and change it to 92.
 
@@ -85,9 +92,9 @@ In general, shorter functions with clearly-defined responsibilities are preferre
 Only use short-form function definitions when they fit on a single line:
 
 ```julia
-# Yes: 
+# Yes:
 foo(x::Int64) = abs(x) + 3
-# No: 
+# No:
 foobar{T<:Int64}(array_data::AbstractArray{T}, item::T) = T[
     abs(x) * abs(item) + 3 for x in array_data
 ]
@@ -109,13 +116,13 @@ When using long-form functions [always use the `return` keyword](https://groups.
 # Yes:
 function fnc{T}(x::T)
     result = zero(T)
-    result += fna(x) 
+    result += fna(x)
     return result
 end
 # No:
 function fnc{T}(x::T)
     result = zero(T)
-    result += fna(x) 
+    result += fna(x)
 end
 
 # Yes:
@@ -128,7 +135,7 @@ function Foo(x, y)
 end
 ```
 
-Functions definitions with parameter lines which exceed 92-characters should separate each parameter by a newline and indent by one-level:
+Functions definitions with parameter lines which exceed 92 characters should separate each parameter by a newline and indent by one-level:
 
 ```julia
 # Yes:
@@ -170,9 +177,9 @@ When calling a function always separate your keyword arguments from your positio
 This avoids mistakes in ambiguous cases (such as splatting a `Dict`).
 
 ```julia
-# Yes: 
+# Yes:
 xy = foo(x; y=3)
-# No: 
+# No:
 xy = foo(x, y=3)
 ```
 
@@ -180,21 +187,21 @@ xy = foo(x, y=3)
 
 Avoid extraneous whitespace in the following situations:
 
-* Immediately inside parentheses, square brackets or braces.
+- Immediately inside parentheses, square brackets or braces.
 
     ```julia
     Yes: spam(ham[1], [eggs])
     No:  spam( ham[ 1 ], [ eggs ] )
     ```
 
-* Immediately before a comma or semicolon:
+- Immediately before a comma or semicolon:
 
     ```julia
     Yes: if x == 4 @show(x, y); x, y = y, x end
     No:  if x == 4 @show(x , y) ; x , y = y , x end
     ```
 
-* When using ranges unless additional operators are used:
+- When using ranges unless additional operators are used:
 
     ```julia
     Yes: ham[1:9], ham[1:3:9], ham[1:3:end]
@@ -208,7 +215,7 @@ Avoid extraneous whitespace in the following situations:
     No:  ham[lower + offset:upper + offset]
     ```
 
-* Immediately before the open bracket that starts and indexing or the argument list of a function call:
+- Immediately before the open bracket that starts and indexing or the argument list of a function call:
 
     ```julia
     Yes: arr[1] = vec[end]
@@ -220,7 +227,7 @@ Avoid extraneous whitespace in the following situations:
     No:  spam (1)  # Note: Deprecated in Julia 0.4
     ```
 
-* More than one space around an assignment (or other) operator to align it with another:
+- More than one space around an assignment (or other) operator to align it with another:
 
     ```
     Yes:
@@ -234,12 +241,12 @@ Avoid extraneous whitespace in the following situations:
     long_variable = 3
     ```
 
-* Always surround these binary operators with a single space on either side: assignment (=), [updating operators](http://julia.readthedocs.org/en/latest/manual/mathematical-operations/#updating-operators) (+=, -= etc.), [numeric comparisons operators](http://julia.readthedocs.org/en/latest/manual/mathematical-operations/#numeric-comparisons) (==, <, >, !=, etc.). Note that this guideline does not apply when performing assignment in method definitions.
+- Always surround these binary operators with a single space on either side: assignment (=), [updating operators](https://docs.julialang.org/en/latest/manual/mathematical-operations/#Updating-operators-1) (+=, -= etc.), [numeric comparisons operators](https://docs.julialang.org/en/latest/manual/mathematical-operations/#Numeric-Comparisons-1) (==, <, >, !=, etc.). Note that this guideline does not apply when performing assignment in method definitions.
 
     ```
     Yes: i = i + 1
     No:  i=i+1
-    
+
     Yes: submitted += 1
     No:  submitted +=1
 
@@ -247,7 +254,8 @@ Avoid extraneous whitespace in the following situations:
     No:  x^2<y
     ```
 
-* Assignments using expanded array, tuple, or function notation should have the first open bracket on the same line assignment operator and the closing bracket should match the indentation level of the assignment. Alternatively you can perform assignments on a single line when they are short:
+- Assignments using expanded array, tuple, or function notation should have the first open bracket on the same line assignment operator and the closing bracket should match the indentation level of the assignment.
+  Alternatively you can perform assignments on a single line when they are short:
 
     ```julia
     Yes:
@@ -264,16 +272,16 @@ Avoid extraneous whitespace in the following situations:
         arg2,
     )
     arr = [1, 2, 3]
-        
+
 
     No:
-    arr = 
+    arr =
     [
         1,
         2,
         3,
     ]
-    arr = 
+    arr =
     [
         1, 2, 3,
     ]
@@ -284,8 +292,8 @@ Avoid extraneous whitespace in the following situations:
         ]
     ```
 
-* Nested array or tuples that are in expanded notation should have the opening and closing brackets at the same indentation level:
-    
+- Nested array or tuples that are in expanded notation should have the opening and closing brackets at the same indentation level:
+
     ```julia
     Yes:
     x = [
@@ -317,8 +325,9 @@ Avoid extraneous whitespace in the following situations:
     ]
     ```
 
-* Always include the trailing comma when working with expanded arrays, tuples or functions notation. This allows future edits to easily move elements around or add additional elements.
-The trailing comma should be excluded when the notation is only on a single-line:
+- Always include the trailing comma when working with expanded arrays, tuples or functions notation.
+  This allows future edits to easily move elements around or add additional elements.
+  The trailing comma should be excluded when the notation is only on a single-line:
 
     ```julia
     Yes:
@@ -346,7 +355,9 @@ The trailing comma should be excluded when the notation is only on a single-line
     arr = [1, 2, 3,]
     ```
 
-* Triple-quotes use the indentation of the lowest indented line (excluding the opening triple-quote). This means the closing triple-quote should be aligned to least indented line in the string. Triple-backticks should also follow this style even though the indentation does not matter for them.
+- Triple-quotes use the indentation of the lowest indented line (excluding the opening triple-quote).
+  This means the closing triple-quote should be aligned to least indented line in the string.
+  Triple-backticks should also follow this style even though the indentation does not matter for them.
 
     ````julia
     Yes:
@@ -394,8 +405,10 @@ julia> splicer([3.0,5,7,9], 2)
  7.0
 ```
 
-Annotations on type fields need to be given a little more thought. Using specific concrete types for fields allows Julia to optimize the memory layout but can reduce flexibility.
-For example lets take a look at the type `MySubString` which allows us to work with a subsection of a string without having to copy the data:
+Annotations on type fields need to be given a little more thought.
+Using specific concrete types for fields allows Julia to optimize the memory layout but can reduce flexibility.
+For example lets take a look at the type `MySubString` which allows us to work with a
+subsection of a string without having to copy the data:
 
 ```julia
 type MySubString <: AbstractString
@@ -405,7 +418,8 @@ type MySubString <: AbstractString
 end
 ```
 
-We want the type to be able to hold any subtype of `AbstractString` but do we need to have `offset` and `endof` to be able to hold any subtype of `Integer`? Really, no we should be ok to use `Int` here (`Int64` on 64-bit systems and `Int32` on 32-bit systems)
+We want the type to be able to hold any subtype of `AbstractString` but do we need to have `offset` and `endof` to be able to hold any subtype of `Integer`?
+Really, no, we should be ok to use `Int` here (`Int64` on 64-bit systems and `Int32` on 32-bit systems).
 Note that even though we're using `Int` a user can still do things like `MySubString("foobar", 0x4, 0x6);` as provided `offset` and `endof` values will be converted to an `Int`.
 
 ```julia
@@ -416,7 +430,7 @@ type MySubString <: AbstractString
 end
 ```
 
-If we truely care about performance there is one more thing we can do by making our type parametric.
+If we truly care about performance there is one more thing we can do by making our type parametric.
 The current definition of `MySubString` allows us to modify the `string` field at any time with any subtype of `AbstractString`.
 Using a parametric type allows to use any subtype of `AbstractString` upon construction but the field type will be set to something concrete (like `String`) and cannot be changed for the lifetime of the instance.
 
@@ -430,7 +444,6 @@ end
 
 Overall, it is best to keep the types general to start with and later optimize the using parametric types.
 Optimizing too early in the code design process can impact your ability to refactor the code early on.
-
 
 ### Comments
 
@@ -457,8 +470,7 @@ Block comments generally consist of one or more paragraphs built out of complete
 
 Comments should be separated by at least two spaces from the expression and have a single space after the `#`.
 
-When referencing Julia in documentation note that "Julia" refers to the programming language
-while "julia" (typically in backticks, e.g. `julia`) refers to the executable.
+When referencing Julia in documentation note that "Julia" refers to the programming language while "julia" (typically in backticks, e.g. `julia`) refers to the executable.
 
 ### Documentation
 
@@ -468,9 +480,8 @@ Avoid documenting methods like `==` as the built in docstring for the function a
 Try to document a function and not individual methods where possible as typically all methods will have similar docstrings.
 If you are adding a method to a function which was defined in `Base` or another package only add a docstring if the behaviour of your function deviates from the existing docstring.
 
-Docstrings are written in [Markdown](https://en.wikipedia.org/wiki/Markdown) and should be
-concise.
-Docstring lines should be wrapped at 92-characters.
+Docstrings are written in [Markdown](https://en.wikipedia.org/wiki/Markdown) and should be concise.
+Docstring lines should be wrapped at 92 characters.
 
 ```julia
 """
@@ -483,7 +494,8 @@ function bar(x, y) ...
 ```
 
 When types or methods have lots of parameters it may not be feasible to write a concise docstring.
-In these cases it is recommended you use the templates below. Note if a section doesn't apply or is overly verbose (for example "Throws" if your function doesn't throw an exception) it can be excluded.
+In these cases it is recommended you use the templates below.
+Note if a section doesn't apply or is overly verbose (for example "Throws" if your function doesn't throw an exception) it can be excluded.
 It is recommended that you have a blank line between the headings and the content when the content is of sufficient length.
 Try to be consistent within a docstring whether you use this additional whitespace.
 Note that the additional space is only for reading raw markdown and does not effect the rendered version.
@@ -513,7 +525,7 @@ Function Template (only required for exported functions):
     mysearch{T}(array::MyArray{T}, val::T; verbose=true) -> Int
 
 Searches the `array` for the `val`. For some reason we don't want to use Julia's
-builtin search :) 
+builtin search :)
 
 # Arguments
 - `array::MyArray{T}`: the array to search
@@ -521,7 +533,7 @@ builtin search :)
 
 # Keywords
 - `verbose::Bool=true`: print out progress details
-    
+
 # Returns
 - `Int`: the index where `val` is located in the `array`
 
@@ -533,8 +545,7 @@ function mysearch{T}(array::AbstractArray{T}, val::T)
 end
 ```
 
-If your method contains lots of arguments or keywords you may want to exclude them from the
-method signature on the first line and instead use `args...` and/or `kwargs...`.
+If your method contains lots of arguments or keywords you may want to exclude them from the method signature on the first line and instead use `args...` and/or `kwargs...`.
 
 ```julia
 """
@@ -559,8 +570,8 @@ function Manager(...)
 end
 ```
 
-Feel free to document multiple methods for a function within the same docstring. Be careful
-to only do this for functions you have defined.
+Feel free to document multiple methods for a function within the same docstring.
+Be careful to only do this for functions you have defined.
 
 ```julia
 """
@@ -586,7 +597,7 @@ function Manager end
 
 ```
 
-If the documentation for bullet-point exceeds 92-characters the line should be wrapped and slightly indented.
+If the documentation for bullet-point exceeds 92 characters the line should be wrapped and slightly indented.
 Avoid aligning the text to the `:`.
 
 ```julia
@@ -636,10 +647,11 @@ Several of these tips are contained within Julia's [Performance Tips](http://doc
 
 Much of Julia's performance gains come from being able to specialize functions on their input types.
 Putting variables and functionality in the global namespace or module's namespace thwarts this.
-One consequence of this is that conventional MATLAB-style scripts will result in surprisingly slow code. There are two ways to mitigate this:
+One consequence of this is that conventional MATLAB-style scripts will result in surprisingly slow code.
+There are two ways to mitigate this:
 
- *  Move as much functionality into functions as possible.
- *  Declare global variables as constants using `const`.
+- Move as much functionality into functions as possible.
+- Declare global variables as constants using `const`.
 
 Remember that the first time you call a function with a certain type signature it will compile that function for the given input types.
-Compilation is sometimes a significant portion of time, so avoid profiling/timing functions on their first run. 
+Compilation is sometimes a significant portion of time, so avoid profiling/timing functions on their first run.
