@@ -411,7 +411,7 @@ For example lets take a look at the type `MySubString` which allows us to work w
 subsection of a string without having to copy the data:
 
 ```julia
-type MySubString <: AbstractString
+mutable struct MySubString <: AbstractString
     string::AbstractString
     offset::Integer
     endof::Integer
@@ -423,7 +423,7 @@ Really, no, we should be ok to use `Int` here (`Int64` on 64-bit systems and `In
 Note that even though we're using `Int` a user can still do things like `MySubString("foobar", 0x4, 0x6);` as provided `offset` and `endof` values will be converted to an `Int`.
 
 ```julia
-type MySubString <: AbstractString
+mutable struct MySubString <: AbstractString
     string::AbstractString
     offset::Int
     endof::Int
@@ -435,7 +435,7 @@ The current definition of `MySubString` allows us to modify the `string` field a
 Using a parametric type allows to use any subtype of `AbstractString` upon construction but the field type will be set to something concrete (like `String`) and cannot be changed for the lifetime of the instance.
 
 ```
-type MySubString{T<:AbstractString} <: AbstractString
+mutable struct MySubString{T<:AbstractString} <: AbstractString
     string::T
     offset::Integer
     endof::Integer
@@ -512,7 +512,7 @@ My super awesome array wrapper!
 - `data::AbstractArray{T,N}`: stores the array being wrapped
 - `metadata::Dict`: stores metadata about the array
 """
-type MyArray{T,N} <: AbstractArray{T,N}
+struct MyArray{T,N} <: AbstractArray{T,N}
     data::AbstractArray{T,N}
     metadata::Dict
 end
