@@ -1,7 +1,7 @@
 #  Style Guide
 
 This document specifies the Invenia coding conventions for Julia code.
-These conventions were created from a variety of sources including Python's [PEP8](http://legacy.python.org/dev/peps/pep-0008), Julia's [Notes for Contributors](https://github.com/JuliaLang/julia/blob/master/CONTRIBUTING.md), and Julia's [Style Guide](https://docs.julialang.org/en/latest/manual/style-guide.html).
+These conventions were created from a variety of sources including Python's [PEP8](http://legacy.python.org/dev/peps/pep-0008), Julia's [Notes for Contributors](https://github.com/JuliaLang/julia/blob/master/CONTRIBUTING.md), and Julia's [Style Guide](https://docs.julialang.org/en/latest/manual/style-guide/).
 
 ## A Word on Consistency
 
@@ -21,12 +21,12 @@ This is [stated best in the PEP8](http://legacy.python.org/dev/peps/pep-0008/#a-
 
 ## Synopsis
 
-Attempt to follow both the [Julia Contribution Guidelines](https://github.com/JuliaLang/julia/blob/master/CONTRIBUTING.md#general-formatting-guidelines-for-julia-code-contributions), the [Julia Style Guide](https://docs.julialang.org/en/latest/manual/style-guide.html), and this guide.
+Attempt to follow both the [Julia Contribution Guidelines](https://github.com/JuliaLang/julia/blob/master/CONTRIBUTING.md#general-formatting-guidelines-for-julia-code-contributions), the [Julia Style Guide](https://docs.julialang.org/en/latest/manual/style-guide/), and this guide.
 When convention guidelines conflict this guide takes precedence (known conflicts will be noted in this guide).
 
 - Use 4 spaces per indentation level, no tabs.
 - Try to adhere to a 92 character line length limit.
-- Use upper camel case convention for [modules](http://julia.readthedocs.org/en/latest/manual/modules/) and [types](http://julia.readthedocs.org/en/latest/manual/types/).
+- Use upper camel case convention for [modules](https://docs.julialang.org/en/latest/manual/modules/) and [types](https://docs.julialang.org/en/latest/manual/types/).
 - Use lower case with underscores for method names (note: Julia code likes to use lower case without underscores).
 - Comments are good, try to explain the intentions of the code.
 - Use whitespace to make the code more readable.
@@ -95,17 +95,17 @@ Only use short-form function definitions when they fit on a single line:
 # Yes:
 foo(x::Int64) = abs(x) + 3
 # No:
-foobar{T<:Int64}(array_data::AbstractArray{T}, item::T) = T[
+foobar(array_data::AbstractArray{T}, item::T) where {T<:Int64} = T[
     abs(x) * abs(item) + 3 for x in array_data
 ]
 
 # No:
-foobar{T<:Int64}(
+foobar(
     array_data::AbstractArray{T},
     item::T,
-) = T[abs(x) * abs(item) + 3 for x in array_data]
+) where {T<:Int64} = T[abs(x) * abs(item) + 3 for x in array_data]
 # Yes:
-function foobar{T<:Int64}(array_data::AbstractArray{T}, item::T)
+function foobar(array_data::AbstractArray{T}, item::T) where T<:Int64
     return T[abs(x) * abs(item) + 3 for x in array_data]
 end
 ```
@@ -114,13 +114,13 @@ When using long-form functions [always use the `return` keyword](https://groups.
 
 ```julia
 # Yes:
-function fnc{T}(x::T)
+function fnc(x::T) where T
     result = zero(T)
     result += fna(x)
     return result
 end
 # No:
-function fnc{T}(x::T)
+function fnc(x::T) where T
     result = zero(T)
     result += fna(x)
 end
@@ -131,7 +131,7 @@ function Foo(x, y)
 end
 # No:
 function Foo(x, y)
-   new(x, y)
+    new(x, y)
 end
 ```
 
@@ -215,33 +215,21 @@ Avoid extraneous whitespace in the following situations:
     No:  ham[lower + offset:upper + offset]
     ```
 
-- Immediately before the open bracket that starts and indexing or the argument list of a function call:
-
-    ```julia
-    Yes: arr[1] = vec[end]
-    No:  arr [1] = vec [end]  # Note: Deprecated in Julia 0.4
-    ```
-
-    ```julia
-    Yes: spam(1)
-    No:  spam (1)  # Note: Deprecated in Julia 0.4
-    ```
-
 - More than one space around an assignment (or other) operator to align it with another:
 
     ```
-    Yes:
+    # Yes:
     x = 1
     y = 2
     long_variable = 3
 
-    No:
+    # No:
     x             = 1
     y             = 2
     long_variable = 3
     ```
 
-- Always surround these binary operators with a single space on either side: assignment (=), [updating operators](https://docs.julialang.org/en/latest/manual/mathematical-operations/#Updating-operators-1) (+=, -= etc.), [numeric comparisons operators](https://docs.julialang.org/en/latest/manual/mathematical-operations/#Numeric-Comparisons-1) (==, <, >, !=, etc.). Note that this guideline does not apply when performing assignment in method definitions.
+- Always surround these binary operators with a single space on either side: assignment (`=`), [updating operators](https://docs.julialang.org/en/latest/manual/mathematical-operations/#Updating-operators-1) (`+=`, `-=`, etc.), [numeric comparisons operators](https://docs.julialang.org/en/latest/manual/mathematical-operations/#Numeric-Comparisons-1) (`==`, `<`, `>`, `!=`, etc.). Note that this guideline does not apply when performing assignment in method definitions.
 
     ```
     Yes: i = i + 1
@@ -258,7 +246,7 @@ Avoid extraneous whitespace in the following situations:
   Alternatively you can perform assignments on a single line when they are short:
 
     ```julia
-    Yes:
+    # Yes:
     arr = [
         1,
         2,
@@ -274,7 +262,7 @@ Avoid extraneous whitespace in the following situations:
     arr = [1, 2, 3]
 
 
-    No:
+    # No:
     arr =
     [
         1,
@@ -295,7 +283,7 @@ Avoid extraneous whitespace in the following situations:
 - Nested array or tuples that are in expanded notation should have the opening and closing brackets at the same indentation level:
 
     ```julia
-    Yes:
+    # Yes:
     x = [
         [
             1, 2, 3,
@@ -307,7 +295,7 @@ Avoid extraneous whitespace in the following situations:
         ['a', 'b', 'c'],
     ]
 
-    No:
+    # No:
     y = [
         [
             1, 2, 3,
@@ -330,7 +318,7 @@ Avoid extraneous whitespace in the following situations:
   The trailing comma should be excluded when the notation is only on a single-line:
 
     ```julia
-    Yes:
+    # Yes:
     arr = [
         1,
         2,
@@ -342,7 +330,7 @@ Avoid extraneous whitespace in the following situations:
     )
     arr = [1, 2, 3]
 
-    No:
+    # No:
     arr = [
         1,
         2,
@@ -359,8 +347,8 @@ Avoid extraneous whitespace in the following situations:
   This means the closing triple-quote should be aligned to least indented line in the string.
   Triple-backticks should also follow this style even though the indentation does not matter for them.
 
-    ````julia
-    Yes:
+    ```julia
+    # Yes:
     str = """
         hello
         world!
@@ -374,12 +362,12 @@ Avoid extraneous whitespace in the following situations:
             --flag value
             parameter
         ```
-    No:
+    # No:
     str = """
         hello
         world!
     """
-    ````
+    ```
 
 ### Type annotation
 
@@ -452,10 +440,10 @@ This is especially important when the code is doing something clever that may no
 Avoid writing comments that state exactly what the code obviously does.
 
 ```julia
-Yes:
+# Yes:
 x = x + 1      # Compensate for border
 
-No:
+# No:
 x = x + 1      # Increment x
 ```
 
@@ -474,7 +462,7 @@ When referencing Julia in documentation note that "Julia" refers to the programm
 
 ### Documentation
 
-It is recommended that most modules, types and functions should have [docstrings](http://docs.julialang.org/en/latest/manual/documentation.html).
+It is recommended that most modules, types and functions should have [docstrings](http://docs.julialang.org/en/latest/manual/documentation/).
 That being said, only exported functions are required to be documented.
 Avoid documenting methods like `==` as the built in docstring for the function already covers the details well.
 Try to document a function and not individual methods where possible as typically all methods will have similar docstrings.
@@ -522,7 +510,7 @@ Function Template (only required for exported functions):
 
 ```julia
 """
-    mysearch{T}(array::MyArray{T}, val::T; verbose=true) -> Int
+    mysearch(array::MyArray{T}, val::T; verbose=true) where {T} -> Int
 
 Searches the `array` for the `val`. For some reason we don't want to use Julia's
 builtin search :)
@@ -538,9 +526,9 @@ builtin search :)
 - `Int`: the index where `val` is located in the `array`
 
 # Throws
-- NotFoundError: I guess we could throw an error if `val` isn't found.
+- `NotFoundError`: I guess we could throw an error if `val` isn't found.
 """
-function mysearch{T}(array::AbstractArray{T}, val::T)
+function mysearch(array::AbstractArray{T}, val::T) where T
     ...
 end
 ```
@@ -610,13 +598,13 @@ Avoid aligning the text to the `:`.
 """
 ```
 
-For additional details on documenting in Julia see the [official documentation](http://docs.julialang.org/en/latest/manual/documentation.html).
+For additional details on documenting in Julia see the [official documentation](http://docs.julialang.org/en/latest/manual/documentation/).
 
 ## Test Formatting
 
 ### Testsets
 
-Julia provides [test sets](http://docs.julialang.org/en/stable/stdlib/test/?highlight=testset#working-with-test-sets) which allows developers to group tests into logical groupings.
+Julia provides [test sets](https://docs.julialang.org/en/latest/stdlib/Test/#Working-with-Test-Sets-1) which allows developers to group tests into logical groupings.
 Test sets can be nested and ideally packages should only have a single "root" test set.
 It is recommended that the "runtests.jl" file contains the root test set which contains the remainder of the tests:
 
@@ -643,7 +631,7 @@ Avoid adding visual noise into test comparisons:
 
 ## Performance and Optimization
 
-Several of these tips are contained within Julia's [Performance Tips](http://docs.julialang.org/en/latest/manual/performance-tips/).
+Several of these tips are contained within Julia's [Performance Tips](https://docs.julialang.org/en/latest/manual/performance-tips/).
 
 Much of Julia's performance gains come from being able to specialize functions on their input types.
 Putting variables and functionality in the global namespace or module's namespace thwarts this.
@@ -654,4 +642,4 @@ There are two ways to mitigate this:
 - Declare global variables as constants using `const`.
 
 Remember that the first time you call a function with a certain type signature it will compile that function for the given input types.
-Compilation is sometimes a significant portion of time, so avoid profiling/timing functions on their first run.
+Compilation is sometimes a significant portion of time, so avoid profiling/timing functions on their first run. Note that the `@benchmark` and `@btime` macros from the [BenchmarkTools](https://github.com/JuliaCI/BenchmarkTools.jl) package can be useful as they run the function many times and report summary statistics of time and memory allocation, alleviating the need to run the function first before benchmarking.
