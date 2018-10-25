@@ -229,17 +229,30 @@ Avoid extraneous whitespace in the following situations:
     long_variable = 3
     ```
 
-- Always surround these binary operators with a single space on either side: assignment (`=`), [updating operators](https://docs.julialang.org/en/latest/manual/mathematical-operations/#Updating-operators-1) (`+=`, `-=`, etc.), [numeric comparisons operators](https://docs.julialang.org/en/latest/manual/mathematical-operations/#Numeric-Comparisons-1) (`==`, `<`, `>`, `!=`, etc.). Note that this guideline does not apply when performing assignment in method definitions.
+- Surround most binary operators with a single space on either side: assignment (`=`), [updating operators](https://docs.julialang.org/en/latest/manual/mathematical-operations/#Updating-operators-1) (`+=`, `-=`, etc.), [numeric comparisons operators](https://docs.julialang.org/en/latest/manual/mathematical-operations/#Numeric-Comparisons-1) (`==`, `<`, `>`, `!=`, etc.), [lambda operator](https://docs.julialang.org/en/latest/manual/functions/#man-anonymous-functions-1) (`->`). Binary operators may be excluded from this guideline include: the [range operator](https://docs.julialang.org/en/latest/base/math/#Base.::) (`:`), [rational operator](https://docs.julialang.org/en/latest/base/math/#Base.://) (`//`), [exponentiation operator](https://docs.julialang.org/en/latest/base/math/#Base.:^-Tuple{Number,Number}) (`^`), [optional arguments/keywords](https://docs.julialang.org/en/latest/manual/functions/#Optional-Arguments-1) (e.g. `f(x=1; y=2)`).
 
-    ```
-    Yes: i = i + 1
-    No:  i=i+1
+    ```julia
+    # Yes:
+    i = i + 1
+    submitted += 1
+    x^2 < y
 
-    Yes: submitted += 1
-    No:  submitted +=1
-
-    Yes: x^2 < y
+    # No:
+    i=i+1
+    submitted +=1
     No:  x^2<y
+    ```
+
+- Avoid using whitespace between unary operands and the expression:
+
+    ```julia
+    # Yes:
+    -1
+    [1 0 -1]
+
+    # No:
+    - 1
+    [1 0 - 1]  # Note: evaluates to `[1 -1]`
     ```
 
 - Assignments using expanded array, tuple, or function notation should have the first open bracket on the same line assignment operator and the closing bracket should match the indentation level of the assignment.
