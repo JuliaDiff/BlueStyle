@@ -382,6 +382,20 @@ Avoid extraneous whitespace in the following situations:
     """
     ```
 
+### Numbers
+
+Floating-point numbers should always include a trailing zero:
+
+```julia
+# Yes:
+1.0
+2.0f0
+
+# No:
+1.
+2.f0
+```
+
 ### Type annotation
 
 Annotations for function definitions should be as general as possible.
