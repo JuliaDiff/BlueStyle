@@ -233,12 +233,12 @@ Avoid extraneous whitespace in the following situations:
 
     ```julia
     # Yes:
-    i = i + 1
+    i = j + 1
     submitted += 1
     x^2 < y
 
     # No:
-    i=i+1
+    i=j+1
     submitted +=1
     No:  x^2<y
     ```
