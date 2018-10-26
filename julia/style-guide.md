@@ -384,16 +384,18 @@ Avoid extraneous whitespace in the following situations:
 
 ### Numbers
 
-Floating-point numbers should always include a trailing zero:
+Floating-point numbers should always include a leading and/or trailing zero:
 
 ```julia
 # Yes:
-1.0
-2.0f0
+0.1
+2.0
+3.0f0
 
 # No:
-1.
-2.f0
+.1
+2.
+3.f0
 ```
 
 ### Type annotation
