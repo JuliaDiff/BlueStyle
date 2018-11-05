@@ -489,6 +489,21 @@ Comments should be separated by at least two spaces from the expression and have
 
 When referencing Julia in documentation note that "Julia" refers to the programming language while "julia" (typically in backticks, e.g. `julia`) refers to the executable.
 
+Only use inline comments if they fit within the line length limit. If your comment comment cannot be fitted inline then place the comment above the content to which it refers:
+
+```julia
+# Yes:
+
+# Number of nodes to predict. Again, an issue with the workflow order. Should be updated
+# after data is fetched.
+p = 1
+
+# No:
+
+p = 1  # Number of nodes to predict. Again, an issue with the workflow order. Should be
+# updated after data is fetched.
+```
+
 ### Documentation
 
 It is recommended that most modules, types and functions should have [docstrings](http://docs.julialang.org/en/latest/manual/documentation/).
