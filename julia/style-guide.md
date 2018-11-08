@@ -253,7 +253,30 @@ xy = foo(x, y=3)
     [1 0 - 1]  # Note: evaluates to `[1 -1]`
     ```
 
-- Assignments using expanded array, tuple, or function notation should have the first open bracket on the same line assignment operator and the closing bracket should match the indentation level of the assignment.
+- Function calls which cannot fit on a single line within the line limit should be broken up such that the lines containing the opening and closing brackets are indented to the same level while the parameters of the function are indented one level further.
+  In most cases the arguments and/or keywords should each be placed on separate lines:
+
+    ```julia
+    # Yes:
+    f(a, b)
+    constraint = conic_form!(
+        SOCElemConstraint(temp2 + temp3, temp2 - temp3, 2 * temp1),
+        unique_conic_forms,
+    )
+
+
+    # No:
+    # Note: `f` call is short enough to be on a single line
+    f(
+        a,
+        b,
+    )
+    constraint = conic_form!(SOCElemConstraint(temp2 + temp3,
+                                               temp2 - temp3, 2 * temp1),
+                             unique_conic_forms)
+    ```
+
+- Assignments using expanded notation for arrays or tuples, or function calls should have the first open bracket on the same line assignment operator and the closing bracket should match the indentation level of the assignment.
   Alternatively you can perform assignments on a single line when they are short:
 
     ```julia
