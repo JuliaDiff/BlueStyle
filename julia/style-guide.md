@@ -185,23 +185,21 @@ xy = foo(x, y=3)
 
 ### Whitespace
 
-Avoid extraneous whitespace in the following situations:
-
-- Immediately inside parentheses, square brackets or braces.
+- Avoid extraneous whitespace immediately inside parentheses, square brackets or braces.
 
     ```julia
     Yes: spam(ham[1], [eggs])
     No:  spam( ham[ 1 ], [ eggs ] )
     ```
 
-- Immediately before a comma or semicolon:
+- Avoid extraneous whitespace immediately before a comma or semicolon:
 
     ```julia
     Yes: if x == 4 @show(x, y); x, y = y, x end
     No:  if x == 4 @show(x , y) ; x , y = y , x end
     ```
 
-- When using ranges unless additional operators are used:
+- Avoid extraneous whitespace when using ranges unless additional operators are used:
 
     ```julia
     Yes: ham[1:9], ham[1:3:9], ham[1:3:end]
@@ -215,7 +213,7 @@ Avoid extraneous whitespace in the following situations:
     No:  ham[lower + offset:upper + offset]
     ```
 
-- More than one space around an assignment (or other) operator to align it with another:
+- Avoid using more than one space around an assignment (or other) operator to align it with another:
 
     ```
     # Yes:
