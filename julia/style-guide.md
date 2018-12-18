@@ -53,19 +53,30 @@ Then navigate to: `Preferences > Settings - More > Syntax Specific - User`
 
 ### Vim Settings
 
-If you are a user of Vim we recommend that you add the following options to your `.vimrc` file.
+If you are a user of Vim we recommend that you add to your `.vim/vimrc` file:
 
 ```
-set tabstop=4                             " Sets tabstops to a width of four columns.
-set softtabstop=4                         " Determines the behaviour of TAB and BACKSPACE keys with expandtab.
-set shiftwidth=4                          " Determines the results of >>, <<, and ==.
+" ~/.vim/vimrc
+set tabstop=4       " Set tabstops to a width of four columns.
+set softtabstop=4   " Determine the behaviour of TAB and BACKSPACE keys with expandtab.
+set shiftwidth=4    " Determine the results of >>, <<, and ==.
 
-au FileType julia setlocal expandtab      " Replaces tabs with spaces.
-au FileType julia setlocal colorcolumn=93 " Highlights column 93 to help maintain the 92 character line limit.
+" Identify .jl files as Julia. If using julia-vim plugin, this is redundant.
+autocmd BufRead,BufNewFile *.jl set filetype=julia
 ```
 
-By default, Vim seems to guess that `.jl` files are written in Lisp.
-To ensure that Vim recognizes Julia files you can manually have it check for the `.jl` extension, but a better solution is to install [Julia-Vim](https://github.com/JuliaLang/julia-vim), which also includes proper syntax highlighting and a few cool other features.
+Then create or edit `.vim/after/ftplugin/julia.vim`, adding the Julia-specifc configuration:
+
+```
+" ~/.vim/after/ftplugin/julia.vim
+setlocal expandtab       " Replace tabs with spaces.
+setlocal textwidth=92    " Limit lines according to Julia's CONTRIBUTING guidelines.
+setlocal colorcolumn+=1  " Highlight first column beyond the line limit.
+```
+
+Additionally, you may find is useful to use the
+[julia-vim plugin](https://github.com/JuliaEditorSupport/julia-vim)
+which adds Julia-aware syntax highlighting and a few cool other features.
 
 ### Atom Settings
 
