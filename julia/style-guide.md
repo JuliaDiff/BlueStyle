@@ -18,7 +18,6 @@ This is [stated best in the PEP8](http://legacy.python.org/dev/peps/pep-0008/#a-
 > Look at other examples and decide what looks best.
 > And don't hesitate to ask!
 
-
 ## Synopsis
 
 Attempt to follow both the [Julia Contribution Guidelines](https://github.com/JuliaLang/julia/blob/master/CONTRIBUTING.md#general-formatting-guidelines-for-julia-code-contributions), the [Julia Style Guide](https://docs.julialang.org/en/latest/manual/style-guide/), and this guide.
@@ -28,6 +27,7 @@ When convention guidelines conflict this guide takes precedence (known conflicts
 - Try to adhere to a 92 character line length limit.
 - Use upper camel case convention for [modules](https://docs.julialang.org/en/latest/manual/modules/) and [types](https://docs.julialang.org/en/latest/manual/types/).
 - Use lower case with underscores for method names (note: Julia code likes to use lower case without underscores).
+- Import modules with `using`, with one module per line and at the top of the file when possible.
 - Comments are good, try to explain the intentions of the code.
 - Use whitespace to make the code more readable.
 - No whitespace at the end of a line (trailing whitespace).
@@ -88,6 +88,29 @@ To change it:
 3. Find preferred line length (under "Julia Grammar") and change it to 92.
 
 ## Code Formatting
+
+### Module Imports
+
+Import modules with `using` rather than `import`. Imports should usually be on separate
+lines, ordered alphabetically, and at the top of the file when possible:
+
+```julia
+using AWSCore
+using FileIO: load, save
+using FTPClient
+using ZipFile
+```
+
+Any use of `import` is discouraged. To bring only a module into scope without bring in its
+exports prefer `using Example: Example` to `import Example`. When importing a method to
+extend it, use module qualification:
+
+```julia
+using Example
+
+Example.hello(x::Monster) = "Aargh! It's a Monster!"
+Base.isreal(x::Ghost) = false
+```
 
 ### Function Naming
 
@@ -277,7 +300,6 @@ xy = foo(x, y=3)
         unique_conic_forms,
     )
 
-
     # No:
     # Note: `f` call is short enough to be on a single line
     f(
@@ -307,7 +329,6 @@ xy = foo(x, y=3)
         arg2,
     )
     arr = [1, 2, 3]
-
 
     # No:
     arr =
