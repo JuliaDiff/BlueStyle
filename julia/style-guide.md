@@ -112,6 +112,12 @@ Example.hello(x::Monster) = "Aargh! It's a Monster!"
 Base.isreal(x::Ghost) = false
 ```
 
+### Global Variables
+
+Global variables should be avoided where possible. If used, they should be `const`s with a
+name written in all capital letters, and placed at the top of the file immediately after any
+imports and exports.
+
 ### Function Naming
 
 Names of functions should describe an action or property irrespective of the type of the argument; the argument's type provides this information instead.
