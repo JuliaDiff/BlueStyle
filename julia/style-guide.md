@@ -114,10 +114,9 @@ Base.isreal(x::Ghost) = false
 
 ### Global Variables
 
-Global variables should be avoided whenever possible. When required, global variables should
-be `const`s and have an uppercase name. They should be defined at the top of the file,
-immediately after imports and exports but before an `__init__` function. If you truly want
-mutable global style behaviour you may want to look into mutable containers or closures.
+Global variables should be avoided whenever possible. When required, global variables should be `const`s and have an uppercase name.
+They should be defined at the top of the file, immediately after imports and exports but before an `__init__` function.
+If you truly want mutable global style behaviour you may want to look into mutable containers or closures.
 
 ### Function Naming
 
