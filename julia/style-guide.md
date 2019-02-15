@@ -91,8 +91,9 @@ To change it:
 
 ### Module Imports
 
-Import modules with `using` rather than `import`. Imports should usually be on separate
-lines, ordered alphabetically, and at the top of the file when possible:
+Import modules with `using` rather than `import`.
+Put all imports for module `Example` in the `src/Example.jl` file.
+Imports should usually be on separate lines, ordered alphabetically, and at the top of the file when possible:
 
 ```julia
 using AWSCore
@@ -101,9 +102,9 @@ using FTPClient
 using ZipFile
 ```
 
-Any use of `import` is discouraged. To bring only a module into scope without bring in its
-exports prefer `using Example: Example` to `import Example`. When importing a method to
-extend it, use module qualification:
+Any use of `import` is discouraged.
+To bring only a module into scope without bring in its exports prefer `using Example: Example` to `import Example`.
+When importing a method to extend it, use module qualification:
 
 ```julia
 using Example
