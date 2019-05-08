@@ -553,6 +553,18 @@ end
 Overall, it is best to keep the types general to start with and later optimize the using parametric types.
 Optimizing too early in the code design process can impact your ability to refactor the code early on.
 
+### Package version specifications
+
+For simplicity and consistency with the wider Julia community, avoid including the default caret specifier when specifying package version requirements.
+
+```julia
+# Yes:
+DataFrames = "0.17"
+
+# No:
+DataFrames = "^0.17"
+```
+
 ### Comments
 
 Comments should be used to state the intended behaviour of code.
