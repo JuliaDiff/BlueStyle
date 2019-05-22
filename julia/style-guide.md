@@ -224,14 +224,14 @@ function foobar(
     # code
 end
 
-# No:
+# No: Because the separate line is more than 92 characters
 function foobar(
     df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString, prefix::AbstractString=""
 )
     # code
 end
 
-# No:
+# No: All args should be on a new line in this case
 function foobar(
     df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString,
     prefix::AbstractString=""
@@ -239,7 +239,7 @@ function foobar(
     # code
 end
 
-# Ok:
+# Ok: Putting all args and all kwargs on separate lines is fine
 function foobar(
     df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString;
     prefix::AbstractString=""
@@ -247,14 +247,15 @@ function foobar(
     # code
 end
 
-# No:
+# No: Don't put some args on the same line as the open parenthesis 
+# if they won't all fit
 function foobar(df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString;
     prefix::AbstractString=""
 )
     # code
 end
 
-# No:
+# No: The args and kwargs should be split up
 function foobar(
     df::DataFrame, id::Symbol, variable::Symbol,
     value::AbstractString; prefix::AbstractString=""
@@ -262,7 +263,7 @@ function foobar(
     # code
 end
 
-# No:
+# No: The kwargs are more than 92 characters
 function foobar(
     df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString;
     prefix="I'm a long default setting that probably shouldn't exist", msg="I'm another long default settings that probably shouldn't exist",
@@ -270,7 +271,7 @@ function foobar(
     # code
 end
 
-# Okay:
+# Okay: Putting all positional args on 1 line and each kwarg on separate lines.
 function foobar(
     df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString;
     prefix="I'm a long default setting that probably shouldn't exist",
