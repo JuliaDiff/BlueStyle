@@ -212,6 +212,73 @@ function foobar(
 end
 ```
 
+If all of the arguments fit inside the 92 character limit then you can place them on 1 line.
+Similarly, you can follow the same rule if you break up positional and keyword arguments
+across two lines.
+
+```
+# Ok:
+function foobar(
+    df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString, prefix::String=""
+)
+    # code
+end
+
+# No:
+function foobar(
+    df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString, prefix::AbstractString=""
+)
+    # code
+end
+
+# No:
+function foobar(
+    df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString,
+    prefix::AbstractString=""
+)
+    # code
+end
+
+# Ok:
+function foobar(
+    df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString;
+    prefix::AbstractString=""
+)
+    # code
+end
+
+# No:
+function foobar(df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString;
+    prefix::AbstractString=""
+)
+    # code
+end
+
+# No:
+function foobar(
+    df::DataFrame, id::Symbol, variable::Symbol,
+    value::AbstractString; prefix::AbstractString=""
+)
+    # code
+end
+
+# No:
+function foobar(
+    df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString;
+    prefix="I'm a long default setting that probably shouldn't exist", msg="I'm another long default settings that probably shouldn't exist",
+)
+    # code
+end
+
+# Okay:
+function foobar(
+    df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString;
+    prefix="I'm a long default setting that probably shouldn't exist",
+    msg="I'm another long default settings that probably shouldn't exist",
+)
+    # code
+end
+```
 ### Keyword Arguments
 
 When calling a function always separate your keyword arguments from your positional arguments with a semicolon.
