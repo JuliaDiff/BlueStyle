@@ -541,6 +541,22 @@ xy = foo(x, y=3)
     """
     ```
 
+### NamedTuples
+
+The `=` character in `NamedTuple`s should be spaced as in keyword arguments.
+No space should be put between the name and its value.
+`NamedTuple`s should not be prefixed with `;` at the start.
+The empty `NamedTuple` should be written `NamedTuple()` not `(;)`
+
+```julia
+# Yes:
+xy = (x=1, y=2)
+
+# No:
+xy = (x = 1, y = 2)
+xy = (;x=1,y=2)
+```
+
 ### Numbers
 
 Floating-point numbers should always include a leading and/or trailing zero:
