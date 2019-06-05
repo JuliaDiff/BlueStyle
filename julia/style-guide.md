@@ -128,6 +128,11 @@ Names of functions should usually be limited to one or two lowercase words separ
 If you find it hard to shorten your function names without losing information, you may need to factor more information into the type signature or split the function's responsibilities into two or more functions.
 In general, shorter functions with clearly-defined responsibilities are preferred.
 
+**NOTE**: Functions that are only intended for internal use should be marked with a leading underscore (e.g., `_internal_utitliy_function(X, y)`).
+Although it should be much less common, the same naming convention can be used for internal types and constants as well (e.g., `_MyInternalType`, `_MY_CONSTANT`).
+Marking function as internal or private lets other people know that they shouldn't expected any kind of API stability from that functionality.
+See the [package development guide](/julia/package-development.md#developing-maintaining-apis) for more information on building and maintaining package APIs.
+
 ### Method Definitions
 
 Only use short-form function definitions when they fit on a single line:
@@ -247,7 +252,7 @@ function foobar(
     # code
 end
 
-# No: Don't put some args on the same line as the open parenthesis 
+# No: Don't put some args on the same line as the open parenthesis
 # if they won't all fit
 function foobar(df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString;
     prefix::AbstractString=""
