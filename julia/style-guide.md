@@ -91,26 +91,99 @@ To change it:
 
 ### Module Imports
 
-Import modules with `using` rather than `import`.
-Put all imports for module `Example` in the `src/Example.jl` file.
-Imports should usually be on separate lines, ordered alphabetically, and at the top of the file when possible:
+[Module imports](https://docs.julialang.org/en/v1/manual/modules/#Summary-of-module-usage-1) should occur at the top of the file or right after a `module` declaration.
+Files loaded via an `include` should avoid specifying their own module imports and should instead add them to the file in which they were included (e.g. "src/Example.jl" or "test/runtests.jl").
+
+A module import should only specify a single package per line.
+The lines should be ordered alphabetically by the package/module name (note: relative imports preceed absolute imports).
 
 ```julia
-using AWSCore
-using FileIO: load, save
-using FTPClient
-using ZipFile
+# Yes:
+using A
+using B
+# No:
+using A, B
+# No:
+using B
+using A
 ```
 
-Any use of `import` is discouraged.
-To bring only a module into scope without bring in its exports prefer `using Example: Example` to `import Example`.
-When importing a method to extend it, use module qualification:
+Imports which explicitly declare what to bring into scope should be grouped into: constants, types, macros, and functions.
+These groupings should be specified in that order and each group's contents should be sorted alphabetically.
+As pseudo-code:
 
 ```julia
+using Example: $(sort(constants)...), $(sort(types)...), $(sort(macros)...), $(sort(functions)...)
+```
+
+In some scenarios there may be alternate ordering within a group which makes more logical sense.
+For example when explicitly importing subtypes of `Period` you may want to sort them in units largest to smallest:
+
+```julia
+using Dates: Year, Month, Week, Day, Hour, Minute, Second, Millisecond
+```
+
+Explicit import lines which exceed the line length should use line-continuation or multiple import statements for the same package.
+Using multiple import statements should be preferred when creating alternate groupings:
+
+```julia
+# Yes:
+using AVeryLongPackage: AVeryLongType, AnotherVeryLongType, a_very_long_function,
+    another_very_long_function
+
+# Yes:
+using AVeryLongPackage: AVeryLongType, AnotherVeryLongType
+using AVeryLongPackage: a_very_long_function, another_very_long_function
+
+# No:
+using AVeryLongPackage:
+    AVeryLongType,
+    AnotherVeryLongType,
+    a_very_long_function,
+    another_very_long_function
+
+# No:
+using AVeryLongPackage: AVeryLongType
+using AVeryLongPackage: AnotherVeryLongType
+using AVeryLongPackage: a_very_long_function
+using AVeryLongPackage: another_very_long_function
+```
+
+Note: Prefer the use of imports with explicit declarations when writing packages.
+Doing so will make maintaining the package easier by knowing what functionality the package is importing and when dependencies can safely be dropped.
+
+Prefer the use of `using` over `import` to ensure that extension of a function is always explicit and on purpose:
+
+```julia
+# Yes:
 using Example
 
 Example.hello(x::Monster) = "Aargh! It's a Monster!"
 Base.isreal(x::Ghost) = false
+
+# No:
+import Base: isreal
+import Example: hello
+
+hello(x::Monster) = "Aargh! It's a Monster!"
+isreal(x::Ghost) = false
+```
+
+If you do require the use of `import` then create separate groupings for `import` and `using` statements divided by a blank line:
+
+```julia
+# Yes:
+import A: a
+import C
+
+using B
+using D: d
+
+# No:
+import A: a
+using B
+import C
+using D: d
 ```
 
 ### Global Variables
