@@ -35,6 +35,29 @@ When convention guidelines conflict this guide takes precedence (known conflicts
 - No whitespace at the end of a line (trailing whitespace).
 - Avoid padding brackets with spaces. ex. `Int64(value)` preferred over `Int64( value )`.
 
+# Contents
+- [Editor Configuration](#editor-configuration)
+    - [Sublime Text Settings](#sublime-text-settings)
+    - [Vim Settings](#vim-settings)
+    - [Atom Settings](#atom-settings)
+- [Code Formatting](#code-formatting)
+    - [Module Imports](#module-imports)
+    - [Global Variables](#global-variables)
+    - [Function Naming](#function-naming)
+    - [Method Definitions](#method-definitions)
+    - [Keyword Arguments](#keyword-arguments)
+    - [Whitespace](#whitespace)
+    - [NamedTuples](#namedtuples)
+    - [Numbers](#numbers)
+    - [Type annotation](#type-annotation)
+    - [Package version specifications](#package-version-specifications)
+    - [Comments](#comments)
+    - [Documentation](#documentation)
+- [Test Formatting](#test-formatting)
+    - [Testsets](#testsets)
+    - [Comparisons](#comparisons)
+- [Performance and Optimization](#performance-and-optimization)
+
 ## Editor Configuration
 
 ### Sublime Text Settings
