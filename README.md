@@ -58,6 +58,8 @@ When convention guidelines conflict this guide takes precedence (known conflicts
     - [Vim Settings](#vim-settings)
     - [Atom Settings](#atom-settings)
 - [Code Style Badge](#code-style-badge)
+- [Copyright Waiver](#copyright-waiver)
+
 
 ## Code Formatting
 
@@ -924,6 +926,7 @@ There are two ways to mitigate this:
 Remember that the first time you call a function with a certain type signature it will compile that function for the given input types.
 Compilation is sometimes a significant portion of time, so avoid profiling/timing functions on their first run. Note that the `@benchmark` and `@btime` macros from the [BenchmarkTools](https://github.com/JuliaCI/BenchmarkTools.jl) package can be useful as they run the function many times and report summary statistics of time and memory allocation, alleviating the need to run the function first before benchmarking.
 
+
 ## Editor Configuration
 
 ### Sublime Text Settings
@@ -978,6 +981,7 @@ To change it:
 2. Search for the "language-julia" package and open the settings for it.
 3. Find preferred line length (under "Julia Grammar") and change it to 92.
 
+
 ## Code Style Badge
 
 Let contributors know your project is following the Blue style guide by adding the badge to your `README.md`
@@ -986,3 +990,8 @@ Let contributors know your project is following the Blue style guide by adding t
 ```
 The badge is blue:
 [![Code Style: Blue](https://img.shields.io/badge/code%20style-blue-4495d1.svg)](https://github.com/invenia/BlueStyle)
+
+## Copyright waiver
+
+This work is in the public domain.
+Copyright and related rights are waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
