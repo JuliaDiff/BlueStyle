@@ -294,7 +294,7 @@ If all of the arguments fit inside the 92 character limit then you can place the
 Similarly, you can follow the same rule if you break up positional and keyword arguments
 across two lines.
 
-```
+```julia
 # Ok:
 function foobar(
     df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString, prefix::String=""
@@ -402,7 +402,7 @@ xy = foo(x, y=3)
 
 - Avoid using more than one space around an assignment (or other) operator to align it with another:
 
-    ```
+    ```julia
     # Yes:
     x = 1
     y = 2
@@ -704,7 +704,7 @@ If we truly care about performance there is one more thing we can do by making o
 The current definition of `MySubString` allows us to modify the `string` field at any time with any subtype of `AbstractString`.
 Using a parametric type allows to use any subtype of `AbstractString` upon construction but the field type will be set to something concrete (like `String`) and cannot be changed for the lifetime of the instance.
 
-```
+```julia
 mutable struct MySubString{T<:AbstractString} <: AbstractString
     string::T
     offset::Integer
