@@ -36,10 +36,6 @@ When convention guidelines conflict this guide takes precedence (known conflicts
 - Avoid padding brackets with spaces. ex. `Int64(value)` preferred over `Int64( value )`.
 
 # Contents
-- [Editor Configuration](#editor-configuration)
-    - [Sublime Text Settings](#sublime-text-settings)
-    - [Vim Settings](#vim-settings)
-    - [Atom Settings](#atom-settings)
 - [Code Formatting](#code-formatting)
     - [Module Imports](#module-imports)
     - [Global Variables](#global-variables)
@@ -57,60 +53,10 @@ When convention guidelines conflict this guide takes precedence (known conflicts
     - [Testsets](#testsets)
     - [Comparisons](#comparisons)
 - [Performance and Optimization](#performance-and-optimization)
-
-## Editor Configuration
-
-### Sublime Text Settings
-
-If you are a user of Sublime Text we recommend that you have the following options in your Julia syntax specific settings.
-To modify these settings first open any Julia file (`*.jl`) in Sublime Text.
-Then navigate to: `Preferences > Settings - More > Syntax Specific - User`
-
-```json
-{
-    "translate_tabs_to_spaces": true,
-    "tab_size": 4,
-    "trim_trailing_white_space_on_save": true,
-    "ensure_newline_at_eof_on_save": true,
-    "rulers": [92]
-}
-```
-
-### Vim Settings
-
-If you are a user of Vim we recommend that you add to your `.vim/vimrc` file:
-
-```
-" ~/.vim/vimrc
-set tabstop=4       " Set tabstops to a width of four columns.
-set softtabstop=4   " Determine the behaviour of TAB and BACKSPACE keys with expandtab.
-set shiftwidth=4    " Determine the results of >>, <<, and ==.
-
-" Identify .jl files as Julia. If using julia-vim plugin, this is redundant.
-autocmd BufRead,BufNewFile *.jl set filetype=julia
-```
-
-Then create or edit `.vim/after/ftplugin/julia.vim`, adding the Julia-specifc configuration:
-
-```
-" ~/.vim/after/ftplugin/julia.vim
-setlocal expandtab       " Replace tabs with spaces.
-setlocal textwidth=92    " Limit lines according to Julia's CONTRIBUTING guidelines.
-setlocal colorcolumn+=1  " Highlight first column beyond the line limit.
-```
-
-Additionally, you may find is useful to use the
-[julia-vim plugin](https://github.com/JuliaEditorSupport/julia-vim)
-which adds Julia-aware syntax highlighting and a few cool other features.
-
-### Atom Settings
-
-Atom defaults preferred line length to 80 characters. We want that at 92 for julia.
-To change it:
-
-1. Go to `Atom -> Preferences -> Packages`.
-2. Search for the "language-julia" package and open the settings for it.
-3. Find preferred line length (under "Julia Grammar") and change it to 92.
+- [Editor Configuration](#editor-configuration)
+    - [Sublime Text Settings](#sublime-text-settings)
+    - [Vim Settings](#vim-settings)
+    - [Atom Settings](#atom-settings)
 
 ## Code Formatting
 
@@ -978,3 +924,56 @@ There are two ways to mitigate this:
 Remember that the first time you call a function with a certain type signature it will compile that function for the given input types.
 Compilation is sometimes a significant portion of time, so avoid profiling/timing functions on their first run. Note that the `@benchmark` and `@btime` macros from the [BenchmarkTools](https://github.com/JuliaCI/BenchmarkTools.jl) package can be useful as they run the function many times and report summary statistics of time and memory allocation, alleviating the need to run the function first before benchmarking.
 
+## Editor Configuration
+
+### Sublime Text Settings
+
+If you are a user of Sublime Text we recommend that you have the following options in your Julia syntax specific settings.
+To modify these settings first open any Julia file (`*.jl`) in Sublime Text.
+Then navigate to: `Preferences > Settings - More > Syntax Specific - User`
+
+```json
+{
+    "translate_tabs_to_spaces": true,
+    "tab_size": 4,
+    "trim_trailing_white_space_on_save": true,
+    "ensure_newline_at_eof_on_save": true,
+    "rulers": [92]
+}
+```
+
+### Vim Settings
+
+If you are a user of Vim we recommend that you add to your `.vim/vimrc` file:
+
+```
+" ~/.vim/vimrc
+set tabstop=4       " Set tabstops to a width of four columns.
+set softtabstop=4   " Determine the behaviour of TAB and BACKSPACE keys with expandtab.
+set shiftwidth=4    " Determine the results of >>, <<, and ==.
+
+" Identify .jl files as Julia. If using julia-vim plugin, this is redundant.
+autocmd BufRead,BufNewFile *.jl set filetype=julia
+```
+
+Then create or edit `.vim/after/ftplugin/julia.vim`, adding the Julia-specifc configuration:
+
+```
+" ~/.vim/after/ftplugin/julia.vim
+setlocal expandtab       " Replace tabs with spaces.
+setlocal textwidth=92    " Limit lines according to Julia's CONTRIBUTING guidelines.
+setlocal colorcolumn+=1  " Highlight first column beyond the line limit.
+```
+
+Additionally, you may find is useful to use the
+[julia-vim plugin](https://github.com/JuliaEditorSupport/julia-vim)
+which adds Julia-aware syntax highlighting and a few cool other features.
+
+### Atom Settings
+
+Atom defaults preferred line length to 80 characters. We want that at 92 for julia.
+To change it:
+
+1. Go to `Atom -> Preferences -> Packages`.
+2. Search for the "language-julia" package and open the settings for it.
+3. Find preferred line length (under "Julia Grammar") and change it to 92.
