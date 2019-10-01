@@ -27,7 +27,7 @@ When convention guidelines conflict this guide takes precedence (known conflicts
 
 - Use 4 spaces per indentation level, no tabs.
 - Try to adhere to a 92 character line length limit.
-- Use upper camel case convention for [modules](https://docs.julialang.org/en/latest/manual/modules/) and [types](https://docs.julialang.org/en/latest/manual/types/).
+- Use upper camel-case convention for [modules](https://docs.julialang.org/en/latest/manual/modules/) and [types](https://docs.julialang.org/en/latest/manual/types/).
 - Use lower case with underscores for method names (note: Julia code likes to use lower case without underscores).
 - Import modules with `using`, with one module per line and at the top of the file when possible.
 - Comments are good, try to explain the intentions of the code.
@@ -213,7 +213,7 @@ using D: d
 
 ### Global Variables
 
-Global variables should be avoided whenever possible. When required, global variables should be `const`s and have an uppercase name.
+Global variables should be avoided whenever possible. When required, global variables should be `const`s and have an all uppercase name seperated with underscores (e.g. `MY_CONSTANT`).
 They should be defined at the top of the file, immediately after imports and exports but before an `__init__` function.
 If you truly want mutable global style behaviour you may want to look into mutable containers or closures.
 
