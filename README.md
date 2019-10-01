@@ -204,7 +204,7 @@ In general, shorter functions with clearly-defined responsibilities are preferre
 **NOTE**: Functions that are only intended for internal use should be marked with a leading underscore (e.g., `_internal_utility_function(X, y)`).
 Although it should be much less common, the same naming convention can be used for internal types and constants as well (e.g., `_MyInternalType`, `_MY_CONSTANT`).
 Marking function as internal or private lets other people know that they shouldn't expected any kind of API stability from that functionality.
-See the [package development guide](/julia/package-development.md#developing-maintaining-apis) for more information on building and maintaining package APIs.
+
 
 ### Method Definitions
 
@@ -952,3 +952,4 @@ There are two ways to mitigate this:
 
 Remember that the first time you call a function with a certain type signature it will compile that function for the given input types.
 Compilation is sometimes a significant portion of time, so avoid profiling/timing functions on their first run. Note that the `@benchmark` and `@btime` macros from the [BenchmarkTools](https://github.com/JuliaCI/BenchmarkTools.jl) package can be useful as they run the function many times and report summary statistics of time and memory allocation, alleviating the need to run the function first before benchmarking.
+
