@@ -35,7 +35,7 @@ When convention guidelines conflict this guide takes precedence (known conflicts
 - No whitespace at the end of a line (trailing whitespace).
 - Avoid padding brackets with spaces. ex. `Int64(value)` preferred over `Int64( value )`.
 
-# Contents
+## Contents
 - [Code Formatting](#code-formatting)
     - [Module Imports](#module-imports)
     - [Global Variables](#global-variables)
@@ -57,6 +57,7 @@ When convention guidelines conflict this guide takes precedence (known conflicts
     - [Sublime Text Settings](#sublime-text-settings)
     - [Vim Settings](#vim-settings)
     - [Atom Settings](#atom-settings)
+- [Code Style Badge](#code-style-badge)
 
 ## Code Formatting
 
@@ -175,7 +176,6 @@ In general, shorter functions with clearly-defined responsibilities are preferre
 **NOTE**: Functions that are only intended for internal use should be marked with a leading underscore (e.g., `_internal_utility_function(X, y)`).
 Although it should be much less common, the same naming convention can be used for internal types and constants as well (e.g., `_MyInternalType`, `_MY_CONSTANT`).
 Marking function as internal or private lets other people know that they shouldn't expected any kind of API stability from that functionality.
-
 
 ### Method Definitions
 
@@ -977,3 +977,12 @@ To change it:
 1. Go to `Atom -> Preferences -> Packages`.
 2. Search for the "language-julia" package and open the settings for it.
 3. Find preferred line length (under "Julia Grammar") and change it to 92.
+
+## Code Style Badge
+
+Let contributors know your project is following the Blue style guide by adding the badge to your `README.md`
+```md
+[![code style blue](https://img.shields.io/badge/code%20style-blue-4495d1.svg)](https://github.com/invenia/BlueStyle)
+```
+The badge is blue:
+[![code style blue](https://img.shields.io/badge/code%20style-blue-4495d1.svg)](https://github.com/invenia/BlueStyle)
