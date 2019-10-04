@@ -141,23 +141,6 @@ hello(x::Monster) = "Aargh! It's a Monster!"
 isreal(x::Ghost) = false
 ```
 
-If you do require the use of `import` then create separate groupings for `import` and `using` statements divided by a blank line:
-
-```julia
-# Yes:
-import A: a
-import C
-
-using B
-using D: d
-
-# No:
-import A: a
-using B
-import C
-using D: d
-```
-
 ### Global Variables
 
 Global variables should be avoided whenever possible. When required, global variables should be `const`s and have an all uppercase name seperated with underscores (e.g. `MY_CONSTANT`).
