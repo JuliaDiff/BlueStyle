@@ -364,7 +364,8 @@ xy = foo(x, y=3)
     ham[1:9]
     ham[9:-3:0]
     ham[1:step:end]
-    ham[lower:upper-1]  # or ham[lower:upper - 1]
+    ham[lower:upper-1]
+    ham[lower:upper - 1]
     ham[lower:(upper + offset)]
     ham[(lower + offset):(upper + offset)]
 
