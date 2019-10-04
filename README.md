@@ -357,18 +357,21 @@ xy = foo(x, y=3)
     No:  if x == 4 @show(x , y) ; x , y = y , x end
     ```
 
-- Avoid extraneous whitespace when using ranges unless additional operators are used:
+- Avoid whitespace around `:` in ranges. Use brackets to clarify expressions on either side.
 
     ```julia
-    Yes: ham[1:9], ham[1:3:9], ham[1:3:end]
-    No:  ham[1: 9], ham[1 : 3: 9]
-    ```
+    # Yes:
+    ham[1:9]
+    ham[9:-3:0]
+    ham[1:step:end]
+    ham[lower:upper-1]  # or ham[lower:upper - 1]
+    ham[lower:(upper + offset)]
+    ham[(lower + offset):(upper + offset)]
 
-    ```julia
-    Yes: ham[lower:upper], ham[lower:step:upper]
-    Yes: ham[lower + offset : upper + offset]
-    Yes: ham[(lower + offset):(upper + offset)]
-    No:  ham[lower + offset:upper + offset]
+    # No:
+    ham[1: 9]
+    ham[9 : -3: 1]
+    ham[lower : upper - 1]
     ```
 
 - Avoid using more than one space around an assignment (or other) operator to align it with another:
