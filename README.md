@@ -341,6 +341,10 @@ This avoids mistakes in ambiguous cases (such as splatting a `Dict`).
 ```julia
 # Yes:
 xy = foo(x; y=3)
+ab = foo(; a=1, b=2)
+
+# Ok:
+ab = foo(a=1, b=2)
 
 # No:
 xy = foo(x, y=3)
