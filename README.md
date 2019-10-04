@@ -880,7 +880,7 @@ Avoid aligning the text to the `:`.
 
 For additional details on documenting in Julia see the [official documentation](http://docs.julialang.org/en/latest/manual/documentation/).
 
-For documentation written in Markdown files such as `README.md` or `docs/src.index.md` use exactly one sentence per line.
+For documentation written in Markdown files such as `README.md` or `docs/src/index.md` use exactly one sentence per line.
 
 ## Test Formatting
 
