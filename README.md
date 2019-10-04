@@ -373,6 +373,7 @@ xy = foo(x, y=3)
     ham[1: 9]
     ham[9 : -3: 1]
     ham[lower : upper - 1]
+    ham[lower + offset:upper + offset]  # Avoid as it is easy to read as `ham[lower + (offset:upper) + offset]`
     ```
 
 - Avoid using more than one space around an assignment (or other) operator to align it with another:
