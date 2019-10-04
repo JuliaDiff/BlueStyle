@@ -716,6 +716,9 @@ Comments that contradict the code are much worse than no comments.
 Always make a priority of keeping the comments up-to-date with code changes!
 
 Comments should be complete sentences.
+Long sentences should be wrapped at 92 characters and not earlier.
+Moving to a newline for a new sentence is okay.
+
 If a comment is a phrase or sentence, its first word should be capitalized, unless it is an identifier that begins with a lower case letter (never alter the case of identifiers!).
 
 If a comment is short, the period at the end can be omitted.
@@ -725,19 +728,25 @@ Comments should be separated by at least two spaces from the expression and have
 
 When referencing Julia in documentation note that "Julia" refers to the programming language while "julia" (typically in backticks, e.g. `julia`) refers to the executable.
 
-Only use inline comments if they fit within the line length limit. If your comment comment cannot be fitted inline then place the comment above the content to which it refers:
+Only use inline comments if they fit within the line length limit. If your comment comment cannot be fitted inline then place the comment above the content to which it refers.
 
 ```julia
 # Yes:
-
 # Number of nodes to predict. Again, an issue with the workflow order. Should be updated
 # after data is fetched.
 p = 1
 
-# No:
+# Number of nodes to predict. Again, an issue with the workflow order.
+# Should be updated after data is fetched.
+p = 1
 
+# No:
 p = 1  # Number of nodes to predict. Again, an issue with the workflow order. Should be
 # updated after data is fetched.
+
+# Number of nodes to predict. Again, an
+# issue with the workflow order. Should be updated after data is fetched.
+p = 1
 ```
 
 ### Documentation
