@@ -1,5 +1,5 @@
 # Used by `git shortlog` to combine contributions from the same author using different
 # name/email addresses in the git history. See `man git-shortlog` for details.
 
-Alex Arslan <alex.arslan@invenia.ca> <ararslan@comcast.net>
+Alex Arslan <ararslan@comcast.net> <alex.arslan@invenia.ca>
 Nick Robinson <npr251@gmail.com> <nicholas.robinson@invenialabs.co.uk>
