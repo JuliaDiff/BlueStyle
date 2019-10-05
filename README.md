@@ -947,7 +947,7 @@ Then navigate to: `Preferences > Settings - More > Syntax Specific - User`
 ### VS Code Settings
 
 If you are a user of VS Code we recommend that you have the following options in your Julia syntax specific settings.
-To modify these settings open your VS Code Settings with `CRTL + S`.
+To modify these settings open your VS Code Settings with `CRTL + ,`.
 
 ```json
 {
