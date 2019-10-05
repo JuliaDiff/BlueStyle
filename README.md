@@ -944,6 +944,25 @@ Then navigate to: `Preferences > Settings - More > Syntax Specific - User`
 }
 ```
 
+### VS Code Settings
+
+If you are a user of VS Code we recommend that you have the following options in your Julia syntax specific settings.
+To modify these settings open your VS Code Settings with `CRTL + ,`.
+
+```json
+{
+    "[julia]": {
+        "editor.detectIndentation": false,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4,
+        "files.insertFinalNewline": true,
+        "files.trimFinalNewlines": true,
+        "files.trimTrailingWhitespace": true,
+        "editor.rulers": [92],
+    },
+}
+```
+
 ### Vim Settings
 
 If you are a user of Vim we recommend that you add to your `.vim/vimrc` file:
