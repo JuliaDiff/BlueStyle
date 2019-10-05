@@ -57,7 +57,7 @@ When convention guidelines conflict this guide takes precedence (known conflicts
     - [Sublime Text Settings](#sublime-text-settings)
     - [Vim Settings](#vim-settings)
     - [Atom Settings](#atom-settings)
-    - [VS-Code Settings](#vscode-settings)
+    - [VS-Code Settings](#vs-code-settings)
 - [Code Style Badge](#code-style-badge)
 
 ## Code Formatting
@@ -982,7 +982,7 @@ To change it:
 3. Find preferred line length (under "Julia Grammar") and change it to 92.
 
 
-### VS Code Settings
+### VS-Code Settings
 
 If you are a user of VS Code we recommend that you have the following options in your Julia syntax specific settings.
 To modify these settings open your VS Code Settings with <kbd>CMD</kbd>+<kbd>,</kbd> (Mac OS) or <kbd>CTRL</kbd>+<kbd>,</kbd> (other OS), and add to your `settings.json`:
