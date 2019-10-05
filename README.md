@@ -57,6 +57,7 @@ When convention guidelines conflict this guide takes precedence (known conflicts
     - [Sublime Text Settings](#sublime-text-settings)
     - [Vim Settings](#vim-settings)
     - [Atom Settings](#atom-settings)
+    - [VS-Code Settings](#vscode-settings)
 - [Code Style Badge](#code-style-badge)
 
 ## Code Formatting
@@ -944,25 +945,6 @@ Then navigate to: `Preferences > Settings - More > Syntax Specific - User`
 }
 ```
 
-### VS Code Settings
-
-If you are a user of VS Code we recommend that you have the following options in your Julia syntax specific settings.
-To modify these settings open your VS Code Settings with `CRTL + ,`.
-
-```json
-{
-    "[julia]": {
-        "editor.detectIndentation": false,
-        "editor.insertSpaces": true,
-        "editor.tabSize": 4,
-        "files.insertFinalNewline": true,
-        "files.trimFinalNewlines": true,
-        "files.trimTrailingWhitespace": true,
-        "editor.rulers": [92],
-    },
-}
-```
-
 ### Vim Settings
 
 If you are a user of Vim we recommend that you add to your `.vim/vimrc` file:
@@ -998,6 +980,27 @@ To change it:
 1. Go to `Atom -> Preferences -> Packages`.
 2. Search for the "language-julia" package and open the settings for it.
 3. Find preferred line length (under "Julia Grammar") and change it to 92.
+
+
+### VS Code Settings
+
+If you are a user of VS Code we recommend that you have the following options in your Julia syntax specific settings.
+To modify these settings open your VS Code Settings with <kbd>CMD</kbd>+<kbd>,</kbd> (Mac OS) or <kbd>CTRL</kbd>+<kbd>,</kbd> (other OS), and add to your `settings.json`:
+
+```json
+{
+    "[julia]": {
+        "editor.detectIndentation": false,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4,
+        "files.insertFinalNewline": true,
+        "files.trimFinalNewlines": true,
+        "files.trimTrailingWhitespace": true,
+        "editor.rulers": [92],
+    },
+}
+```
+Additionally you may find the [Julia VS-Code plugin](https://github.com/julia-vscode/julia-vscode) useful.
 
 ## Code Style Badge
 
