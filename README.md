@@ -73,8 +73,10 @@ The lines should be ordered alphabetically by the package/module name (note: rel
 # Yes:
 using A
 using B
+
 # No:
 using A, B
+
 # No:
 using B
 using A
@@ -184,20 +186,23 @@ Only use short-form function definitions when they fit on a single line:
 ```julia
 # Yes:
 foo(x::Int64) = abs(x) + 3
+
 # No:
 foobar(array_data::AbstractArray{T}, item::T) where {T<:Int64} = T[
     abs(x) * abs(item) + 3 for x in array_data
 ]
+```
+```julia
+# Yes:
+function foobar(array_data::AbstractArray{T}, item::T) where T<:Int64
+    return T[abs(x) * abs(item) + 3 for x in array_data]
+end
 
 # No:
 foobar(
     array_data::AbstractArray{T},
     item::T,
 ) where {T<:Int64} = T[abs(x) * abs(item) + 3 for x in array_data]
-# Yes:
-function foobar(array_data::AbstractArray{T}, item::T) where T<:Int64
-    return T[abs(x) * abs(item) + 3 for x in array_data]
-end
 ```
 
 When using long-form functions [always use the `return` keyword](https://groups.google.com/forum/#!topic/julia-users/4RVR8qQDrUg):
@@ -209,16 +214,19 @@ function fnc(x::T) where T
     result += fna(x)
     return result
 end
+
 # No:
 function fnc(x::T) where T
     result = zero(T)
     result += fna(x)
 end
-
+```
+```julia
 # Yes:
 function Foo(x, y)
     return new(x, y)
 end
+
 # No:
 function Foo(x, y)
     new(x, y)
@@ -243,13 +251,14 @@ end
 function foobar(df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString, prefix::AbstractString="")
     # code
 end
+
 # No:
 function foobar(df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString,
     prefix::AbstractString="")
 
     # code
 end
-# No:
+
 function foobar(
         df::DataFrame,
         id::Symbol,
@@ -273,22 +282,7 @@ function foobar(
     # code
 end
 
-# No: Because the separate line is more than 92 characters
-function foobar(
-    df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString, prefix::AbstractString=""
-)
-    # code
-end
-
-# No: All args should be on a new line in this case
-function foobar(
-    df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString,
-    prefix::AbstractString=""
-)
-    # code
-end
-
-# Ok: Putting all args and all kwargs on separate lines is fine
+# Ok: Putting all args and all kwargs on separate lines is fine.
 function foobar(
     df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString;
     prefix::AbstractString=""
@@ -296,9 +290,32 @@ function foobar(
     # code
 end
 
-# No: Don't put some args on the same line as the open parenthesis
-# if they won't all fit
+# Ok: Putting all positional args on 1 line and each kwarg on separate lines.
+function foobar(
+    df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString;
+    prefix="I'm a long default setting that probably shouldn't exist",
+    msg="I'm another long default settings that probably shouldn't exist",
+)
+    # code
+end
+
+# No: Don't put any args on the same line as the open parenthesis if they won't all fit.
 function foobar(df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString;
+    prefix::AbstractString=""
+)
+    # code
+end
+
+# No: Because the separate line is more than 92 characters.
+function foobar(
+    df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString, prefix::AbstractString=""
+)
+    # code
+end
+
+# No: All args should be on a new line in this case.
+function foobar(
+    df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString,
     prefix::AbstractString=""
 )
     # code
@@ -319,15 +336,6 @@ function foobar(
 )
     # code
 end
-
-# Okay: Putting all positional args on 1 line and each kwarg on separate lines.
-function foobar(
-    df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString;
-    prefix="I'm a long default setting that probably shouldn't exist",
-    msg="I'm another long default settings that probably shouldn't exist",
-)
-    # code
-end
 ```
 ### Keyword Arguments
 
@@ -337,6 +345,7 @@ This avoids mistakes in ambiguous cases (such as splatting a `Dict`).
 ```julia
 # Yes:
 xy = foo(x; y=3)
+
 # No:
 xy = foo(x, y=3)
 ```
