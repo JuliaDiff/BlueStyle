@@ -45,6 +45,7 @@ When convention guidelines conflict this guide takes precedence (known conflicts
     - [Whitespace](#whitespace)
     - [NamedTuples](#namedtuples)
     - [Numbers](#numbers)
+    - [Ternary Operator](#ternary-operator)
     - [Type annotation](#type-annotation)
     - [Package version specifications](#package-version-specifications)
     - [Comments](#comments)
@@ -626,6 +627,42 @@ Floating-point numbers should always include a leading and/or trailing zero:
 .1
 2.
 3.f0
+```
+
+### Ternary Operator
+
+Ternary operators (`?:`) should generally only consume a single line.
+Do not chain multiple ternary operators.
+If chaining many conditions, consider using an `if`-`elseif`-`else` conditional, dispatch, or a dictionary.
+
+```julia
+# Yes:
+foobar = foo == 2 ? bar : baz
+
+# No:
+foobar = foo == 2 ?
+    bar :
+    baz
+foobar = foo == 2 ? bar : foo == 3 ? qux : baz
+```
+
+As an alternative, you can use a compound boolean expression:
+
+```julia
+# Yes:
+foobar = if foo == 2
+    bar
+else
+    baz
+end
+
+foobar = if foo == 2
+    bar
+elseif foo == 3
+    qux
+else
+    baz
+end
 ```
 
 ### Type annotation
