@@ -643,8 +643,17 @@ foobar = foo == 2 ? bar : foo == 3 ? qux : baz
 As an alternative, you can use a compound boolean expression:
 
 ```julia
+# Yes:
 foobar = if foo == 2
     bar
+else
+    baz
+end
+
+foobar = if foo == 2
+    bar
+elseif foo == 3
+    qux
 else
     baz
 end
