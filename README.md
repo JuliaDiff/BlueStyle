@@ -69,7 +69,7 @@ When convention guidelines conflict this guide takes precedence (known conflicts
 Files loaded via an `include` should avoid specifying their own module imports and should instead add them to the file in which they were included (e.g. "src/Example.jl" or "test/runtests.jl").
 
 A module import should only specify a single package per line.
-The lines should be ordered alphabetically by the package/module name (note: relative imports preceed absolute imports).
+The lines should be ordered alphabetically by the package/module name (note: relative imports precede absolute imports).
 
 ```julia
 # Yes:
