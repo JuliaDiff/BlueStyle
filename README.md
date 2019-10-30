@@ -13,7 +13,7 @@ This is [stated best in the PEP8](http://legacy.python.org/dev/peps/pep-0008/#a-
 > A style guide is about consistency.
 > Consistency with this style guide is important.
 > Consistency within a project is more important.
-> Consistency within one module or function is most important.
+> Consistency within one module or function is the most important.
 
 > But most importantly: know when to be inconsistent -- sometimes the style guide just doesn't apply.
 > When in doubt, use your best judgment.
