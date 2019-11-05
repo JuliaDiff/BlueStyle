@@ -431,7 +431,6 @@ xy = foo(x, y=3)
     domath(x::Int) = x + 10
 
 
-
     function domath(x::String)
         return "A string is a one-dimensional extended object postulated in string theory."
     end
@@ -601,6 +600,7 @@ The empty `NamedTuple` should be written `NamedTuple()` not `(;)`
 # Yes:
 xy = (x=1, y=2)
 x = (x=1,)  # Trailing comma required for correctness.
+x = (; kwargs...)  # Semicolon required to splat correctly.
 
 # No:
 xy = (x = 1, y = 2)
