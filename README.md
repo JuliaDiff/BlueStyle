@@ -607,10 +607,13 @@ The empty `NamedTuple` should be written `NamedTuple()` not `(;)`
 ```julia
 # Yes:
 xy = (x=1, y=2)
+x = (x=1,)  # Trailing comma required for correctness.
+x = (; kwargs...)  # Semicolon required to splat correctly.
 
 # No:
 xy = (x = 1, y = 2)
 xy = (;x=1,y=2)
+x = (; x=1)
 ```
 
 ### Numbers
