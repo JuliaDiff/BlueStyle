@@ -778,7 +778,7 @@ Comments should be separated by at least two spaces from the expression and have
 
 When referencing Julia in documentation note that "Julia" refers to the programming language while "julia" (typically in backticks, e.g. `julia`) refers to the executable.
 
-Only use inline comments if they fit within the line length limit. If your comment comment cannot be fitted inline then place the comment above the content to which it refers:
+Only use inline comments if they fit within the line length limit. If your comment cannot be fitted inline then place the comment above the content to which it refers:
 
 ```julia
 # Yes:
