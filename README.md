@@ -410,7 +410,7 @@ xy = foo(x, y=3)
     # No:
     i=j+1
     submitted +=1
-    No:  x^2<y
+    x^2<y
     ```
 
 - Avoid using whitespace between unary operands and the expression:
