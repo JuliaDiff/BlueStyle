@@ -84,12 +84,12 @@ using B
 using A
 ```
 
-Imports which explicitly declare what to bring into scope should be grouped into: constants, types, macros, and functions.
+Imports which explicitly declare what to bring into scope should be grouped into: modules, constants, types, macros, and functions.
 These groupings should be specified in that order and each group's contents should be sorted alphabetically.
 As pseudo-code:
 
 ```julia
-using Example: $(sort(constants)...), $(sort(types)...), $(sort(macros)...), $(sort(functions)...)
+using Example: $(sort(modules)...), $(sort(constants)...), $(sort(types)...), $(sort(macros)...), $(sort(functions)...)
 ```
 
 In some scenarios there may be alternate ordering within a group which makes more logical sense.
