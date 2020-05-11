@@ -85,8 +85,15 @@ using A
 ```
 
 Imports which explicitly declare what to bring into scope should be grouped into: modules, constants, types, macros, and functions.
-These groupings should be specified in that order and each group's contents should be sorted alphabetically.
+These groupings should be specified in that order and each group's contents should be sorted alphabetically, typically with modules on a separate line.
 As pseudo-code:
+
+```julia
+using Example: $(sort(modules)...)
+using Example: $(sort(constants)...), $(sort(types)...), $(sort(macros)...), $(sort(functions)...)
+```
+
+If you are only explicitly importing a few items you can alternatively use the following one-line form:
 
 ```julia
 using Example: $(sort(modules)...), $(sort(constants)...), $(sort(types)...), $(sort(macros)...), $(sort(functions)...)
