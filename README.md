@@ -186,7 +186,7 @@ In general, shorter functions with clearly-defined responsibilities are preferre
 
 **NOTE**: Functions that are only intended for internal use should be marked with a leading underscore (e.g., `_internal_utility_function(X, y)`).
 Although it should be much less common, the same naming convention can be used for internal types and constants as well (e.g., `_MyInternalType`, `_MY_CONSTANT`).
-Marking function as internal or private lets other people know that they shouldn't expected any kind of API stability from that functionality.
+Marking a function as internal or private lets other people know that they shouldn't expect any kind of API stability from that functionality.
 
 ### Method Definitions
 
@@ -586,7 +586,7 @@ xy = foo(x, y=3)
     ```
 
 - Triple-quotes use the indentation of the lowest indented line (excluding the opening triple-quote).
-  This means the closing triple-quote should be aligned to least indented line in the string.
+  This means the closing triple-quote should be aligned to the least indented line in the string.
   Triple-backticks should also follow this style even though the indentation does not matter for them.
 
     ```julia
@@ -694,7 +694,7 @@ splicer(arr::AbstractArray, step::Integer) = arr[1:step:end]
 splicer(arr::Array{Int}, step::Int) = arr[1:step:end]
 ```
 
-Using as generic types as possible allows for a variety of inputs and allows you code to be more general:
+Using as generic types as possible allows for a variety of inputs and allows your code to be more general:
 
 ```julia
 julia> splicer(1:10, 2)
@@ -733,7 +733,7 @@ end
 
 If we truly care about performance there is one more thing we can do by making our type parametric.
 The current definition of `MySubString` allows us to modify the `string` field at any time with any subtype of `AbstractString`.
-Using a parametric type allows to use any subtype of `AbstractString` upon construction but the field type will be set to something concrete (like `String`) and cannot be changed for the lifetime of the instance.
+Using a parametric type allows us to use any subtype of `AbstractString` upon construction but the field type will be set to something concrete (like `String`) and cannot be changed for the lifetime of the instance.
 
 ```julia
 mutable struct MySubString{T<:AbstractString} <: AbstractString
@@ -743,7 +743,7 @@ mutable struct MySubString{T<:AbstractString} <: AbstractString
 end
 ```
 
-Overall, it is best to keep the types general to start with and later optimize the using parametric types.
+Overall, it is best to keep the types general to start with and later optimize them using parametric types.
 Optimizing too early in the code design process can impact your ability to refactor the code early on.
 
 ### Package version specifications
@@ -826,7 +826,7 @@ In these cases it is recommended you use the templates below.
 Note if a section doesn't apply or is overly verbose (for example "Throws" if your function doesn't throw an exception) it can be excluded.
 It is recommended that you have a blank line between the headings and the content when the content is of sufficient length.
 Try to be consistent within a docstring whether you use this additional whitespace.
-Note that the additional space is only for reading raw markdown and does not effect the rendered version.
+Note that the additional space is only for reading raw markdown and does not affect the rendered version.
 
 Type Template (should be skipped if is redundant with the constructor(s) docstring):
 
