@@ -1063,7 +1063,7 @@ Additionally you may find the [Julia VS-Code plugin](https://github.com/julia-vs
 
 ## Code Style Badge
 
-Let contributors know your project is following the Blue style guide by adding the badge to your `README.md`
+Let contributors know your project is following the Blue style guide by adding the badge to your `README.md`.
 ```md
 [![Code Style: Blue](https://img.shields.io/badge/code%20style-blue-4495d1.svg)](https://github.com/invenia/BlueStyle)
 ```
