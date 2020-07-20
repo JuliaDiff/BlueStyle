@@ -632,7 +632,7 @@ xy = foo(x, y=3)
     ```julia
     # Yes
     if foo
-      println("Hi")
+        println("Hi")
     end
 
     for i in 1:10
