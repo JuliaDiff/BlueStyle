@@ -611,6 +611,85 @@ xy = foo(x, y=3)
     """
     ```
 
+- Group similar one line statements together.
+
+    ```julia
+    # Yes
+    foo = 1
+    bar = 2
+    baz = 3
+
+    # No
+    foo = 1
+
+    bar = 2
+
+    baz = 3
+    ```
+
+- Use blank-lines to separate different multi-line blocks.
+
+    ```julia
+    # Yes
+    if foo
+      println("Hi")
+    end
+
+    for i in 1:10
+      println(i)
+    end
+
+    # No
+    if foo
+        println("Hi")
+    end
+    for i in 1:10
+        println(i)
+    end
+    ```
+
+- After a function definition, and before an end statement do not include a line break
+
+    ```julia
+    # Yes
+    function foo(bar::Int64, baz::Int64)
+        return bar + baz
+    end
+
+    # No
+    function foo(bar::Int64, baz::Int64)
+
+        return bar + baz
+    end
+
+    # No
+    function foo(bar::In64, baz::Int64)
+        return bar + baz
+
+    end
+    ```
+
+- Use line breaks between control flow statements and returns
+
+    ```julia
+    # Yes
+    function foo(bar; verbose=false)
+        if verbose
+            println("baz")
+        end
+
+        return bar
+    end
+
+    # No
+    function foo(bar; verbose=false)
+        if verbose
+            println("baz")
+        end
+        return bar
+    end
+    ```
+
 ### NamedTuples
 
 The `=` character in `NamedTuple`s should be spaced as in keyword arguments.
