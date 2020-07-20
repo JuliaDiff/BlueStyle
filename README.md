@@ -614,7 +614,7 @@ xy = foo(x, y=3)
 - Group similar one line statements together.
 
     ```julia
-    # Yes
+    # Yes:
     foo = 1
     bar = 2
     baz = 3
