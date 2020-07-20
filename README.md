@@ -656,7 +656,7 @@ xy = foo(x, y=3)
         return bar + baz
     end
 
-    # No
+    # No:
     function foo(bar::Int64, baz::Int64)
 
         return bar + baz
