@@ -651,7 +651,7 @@ xy = foo(x, y=3)
 - After a function definition, and before an end statement do not include a blank line.
 
     ```julia
-    # Yes
+    # Yes:
     function foo(bar::Int64, baz::Int64)
         return bar + baz
     end
