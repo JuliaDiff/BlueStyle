@@ -672,7 +672,7 @@ xy = foo(x, y=3)
 - Use line breaks between control flow statements and returns.
 
     ```julia
-    # Yes
+    # Yes:
     function foo(bar; verbose=false)
         if verbose
             println("baz")
