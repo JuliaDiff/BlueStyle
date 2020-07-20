@@ -619,7 +619,7 @@ xy = foo(x, y=3)
     bar = 2
     baz = 3
 
-    # No
+    # No:
     foo = 1
 
     bar = 2
