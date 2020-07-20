@@ -681,7 +681,7 @@ xy = foo(x, y=3)
         return bar
     end
 
-    # No
+    # Ok:
     function foo(bar; verbose=false)
         if verbose
             println("baz")
