@@ -669,7 +669,7 @@ xy = foo(x, y=3)
     end
     ```
 
-- Use line breaks between control flow statements and returns
+- Use line breaks between control flow statements and returns.
 
     ```julia
     # Yes
