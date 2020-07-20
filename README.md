@@ -630,7 +630,7 @@ xy = foo(x, y=3)
 - Use blank-lines to separate different multi-line blocks.
 
     ```julia
-    # Yes
+    # Yes:
     if foo
         println("Hi")
     end
