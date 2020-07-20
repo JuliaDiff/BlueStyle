@@ -648,7 +648,7 @@ xy = foo(x, y=3)
     end
     ```
 
-- After a function definition, and before an end statement do not include a line break
+- After a function definition, and before an end statement do not include a blank line.
 
     ```julia
     # Yes
