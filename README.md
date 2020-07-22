@@ -312,7 +312,7 @@ end
 function foobar(
     df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString;
     prefix="I'm a long default setting that probably shouldn't exist",
-    msg="I'm another long default settings that probably shouldn't exist",
+    msg="I'm another long default setting that probably shouldn't exist",
 )
     # code
 end
