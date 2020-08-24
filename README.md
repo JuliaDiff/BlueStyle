@@ -46,7 +46,7 @@ When convention guidelines conflict this guide takes precedence (known conflicts
     - [NamedTuples](#namedtuples)
     - [Numbers](#numbers)
     - [Ternary Operator](#ternary-operator)
-    - [For loops](#for-loop)
+    - [For loops](#for-loops)
     - [Type annotation](#type-annotation)
     - [Package version specifications](#package-version-specifications)
     - [Comments](#comments)
@@ -762,7 +762,7 @@ else
 end
 ```
 
-### For lops
+### For loops
 For loops should always use `in`, never `=` or `∈`.
 This also applies to list and generator comprehensions
 
