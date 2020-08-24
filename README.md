@@ -46,6 +46,7 @@ When convention guidelines conflict this guide takes precedence (known conflicts
     - [NamedTuples](#namedtuples)
     - [Numbers](#numbers)
     - [Ternary Operator](#ternary-operator)
+    - [For loops](#for-loops)
     - [Type annotation](#type-annotation)
     - [Package version specifications](#package-version-specifications)
     - [Comments](#comments)
@@ -760,6 +761,27 @@ else
     baz
 end
 ```
+
+### For loops
+For loops should always use `in`, never `=` or `∈`.
+This also applies to list and generator comprehensions
+
+```julia
+# Yes
+for i in 1:10
+    #...
+end
+
+[foo(x) for x in xs]
+
+# No:
+for i = 1:10
+    #...
+end
+
+[foo(x) for x ∈ xs]
+```
+
 
 ### Type annotation
 
