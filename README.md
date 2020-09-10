@@ -243,6 +243,21 @@ function Foo(x, y)
 end
 ```
 
+When using the `return` keyword always explicitly return a value, even if it is `return nothing`.
+```julia
+# Yes:
+function maybe_do_thing()
+    # code
+    return nothing
+end
+
+# No:
+function maybe_do_thing()
+    # code
+    return
+end
+```
+
 Functions definitions with parameter lines which exceed 92 characters should separate each parameter by a newline and indent by one-level:
 
 ```julia
@@ -451,7 +466,6 @@ xy = foo(x, y=3)
     domath(x::Number) = x + 5
 
     domath(x::Int) = x + 10
-
 
 
     function domath(x::String)
