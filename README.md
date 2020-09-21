@@ -22,12 +22,12 @@ This is [stated best in the PEP8](http://legacy.python.org/dev/peps/pep-0008/#a-
 
 ## Synopsis
 
-Attempt to follow both the [Julia Contribution Guidelines](https://github.com/JuliaLang/julia/blob/master/CONTRIBUTING.md#general-formatting-guidelines-for-julia-code-contributions), the [Julia Style Guide](https://docs.julialang.org/en/latest/manual/style-guide/), and this guide.
+Attempt to follow both the [Julia Contribution Guidelines](https://github.com/JuliaLang/julia/blob/master/CONTRIBUTING.md#general-formatting-guidelines-for-julia-code-contributions), the [Julia Style Guide](https://docs.julialang.org/en/v1/manual/style-guide/), and this guide.
 When convention guidelines conflict this guide takes precedence (known conflicts will be noted in this guide).
 
 - Use 4 spaces per indentation level, no tabs.
 - Try to adhere to a 92 character line length limit.
-- Use upper camel-case convention for [modules](https://docs.julialang.org/en/latest/manual/modules/) and [types](https://docs.julialang.org/en/latest/manual/types/).
+- Use upper camel-case convention for [modules](https://docs.julialang.org/en/v1/manual/modules/) and [types](https://docs.julialang.org/en/v1/manual/types/).
 - Use lower case with underscores for method names (note: Julia code likes to use lower case without underscores).
 - Import modules with `using`, with one module per line and at the top of the file when possible.
 - Comments are good, try to explain the intentions of the code.
@@ -422,7 +422,7 @@ xy = foo(x, y=3)
     long_variable = 3
     ```
 
-- Surround most binary operators with a single space on either side: assignment (`=`), [updating operators](https://docs.julialang.org/en/latest/manual/mathematical-operations/#Updating-operators-1) (`+=`, `-=`, etc.), [numeric comparisons operators](https://docs.julialang.org/en/latest/manual/mathematical-operations/#Numeric-Comparisons-1) (`==`, `<`, `>`, `!=`, etc.), [lambda operator](https://docs.julialang.org/en/latest/manual/functions/#man-anonymous-functions-1) (`->`). Binary operators may be excluded from this guideline include: the [range operator](https://docs.julialang.org/en/latest/base/math/#Base.::) (`:`), [rational operator](https://docs.julialang.org/en/latest/base/math/#Base.://) (`//`), [exponentiation operator](https://docs.julialang.org/en/latest/base/math/#Base.:^-Tuple{Number,Number}) (`^`), [optional arguments/keywords](https://docs.julialang.org/en/latest/manual/functions/#Optional-Arguments-1) (e.g. `f(x=1; y=2)`).
+- Surround most binary operators with a single space on either side: assignment (`=`), [updating operators](https://docs.julialang.org/en/v1/manual/mathematical-operations/#Updating-operators-1) (`+=`, `-=`, etc.), [numeric comparisons operators](https://docs.julialang.org/en/v1/manual/mathematical-operations/#Numeric-Comparisons-1) (`==`, `<`, `>`, `!=`, etc.), [lambda operator](https://docs.julialang.org/en/v1/manual/functions/#man-anonymous-functions-1) (`->`). Binary operators may be excluded from this guideline include: the [range operator](https://docs.julialang.org/en/v1/base/math/#Base.::) (`:`), [rational operator](https://docs.julialang.org/en/v1/base/math/#Base.://) (`//`), [exponentiation operator](https://docs.julialang.org/en/v1/base/math/#Base.:^-Tuple{Number,Number}) (`^`), [optional arguments/keywords](https://docs.julialang.org/en/v1/manual/functions/#Optional-Arguments-1) (e.g. `f(x=1; y=2)`).
 
     ```julia
     # Yes:
@@ -918,7 +918,7 @@ p = 1  # Number of nodes to predict. Again, an issue with the workflow order. Sh
 
 ### Documentation
 
-It is recommended that most modules, types and functions should have [docstrings](http://docs.julialang.org/en/latest/manual/documentation/).
+It is recommended that most modules, types and functions should have [docstrings](http://docs.julialang.org/en/v1/manual/documentation/).
 That being said, only exported functions are required to be documented.
 Avoid documenting methods like `==` as the built in docstring for the function already covers the details well.
 Try to document a function and not individual methods where possible as typically all methods will have similar docstrings.
@@ -1062,7 +1062,7 @@ For documentation written in Markdown files such as `README.md` or `docs/src/ind
 
 ### Testsets
 
-Julia provides [test sets](https://docs.julialang.org/en/latest/stdlib/Test/#Working-with-Test-Sets-1) which allows developers to group tests into logical groupings.
+Julia provides [test sets](https://docs.julialang.org/en/v1/stdlib/Test/#Working-with-Test-Sets-1) which allows developers to group tests into logical groupings.
 Test sets can be nested and ideally packages should only have a single "root" test set.
 It is recommended that the "runtests.jl" file contains the root test set which contains the remainder of the tests:
 
@@ -1089,7 +1089,7 @@ Avoid adding visual noise into test comparisons:
 
 ## Performance and Optimization
 
-Several of these tips are contained within Julia's [Performance Tips](https://docs.julialang.org/en/latest/manual/performance-tips/).
+Several of these tips are contained within Julia's [Performance Tips](https://docs.julialang.org/en/v1/manual/performance-tips/).
 
 Much of Julia's performance gains come from being able to specialize functions on their input types.
 Putting variables and functionality in the global namespace or module's namespace thwarts this.
