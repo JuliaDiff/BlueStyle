@@ -629,7 +629,7 @@ xy = foo(x, y=3)
           ```
     ```
 
-- Assignments using triple-quotes or triple-backticks should have the opening quotes on the same line assignment operator.
+- Assignments using triple-quotes or triple-backticks should have the opening quotes on the same line as the assignment operator.
 
     ```julia
     # Yes:
