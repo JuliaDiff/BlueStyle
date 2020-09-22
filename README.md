@@ -629,6 +629,21 @@ xy = foo(x, y=3)
           ```
     ```
 
+- Assignments using triple-quotes or triple-backticks should have the opening quotes on the same line assignment operator.
+
+    ```julia
+    # Yes:
+    str2 = """
+           hello
+       world!
+       """
+
+    # No:
+    str2 =
+       """
+           hello
+       world!
+       """
     ```
 
 - Group similar one line statements together.
