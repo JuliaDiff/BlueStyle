@@ -28,7 +28,7 @@ When convention guidelines conflict this guide takes precedence (known conflicts
 - Use 4 spaces per indentation level, no tabs.
 - Try to adhere to a 92 character line length limit.
 - Use upper camel-case convention for [modules](https://docs.julialang.org/en/v1/manual/modules/) and [types](https://docs.julialang.org/en/v1/manual/types/).
-- Use lower case with underscores for method names (note: Julia code likes to use lower case without underscores).
+- Use lower case with underscores for method names (note: contrary to this, it is a common stylistic choice in the [Julia base code](https://github.com/JuliaLang/julia/tree/master/base) to use lower case without underscores).
 - Import modules with `using`, with one module per line and at the top of the file when possible.
 - Comments are good, try to explain the intentions of the code.
 - Use whitespace to make the code more readable.
