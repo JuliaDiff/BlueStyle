@@ -1000,7 +1000,7 @@ A cluster manager which spawns workers.
 # Arguments
 
 - `min_workers::Integer`: The minimum number of workers to spawn or an exception is thrown
-- `max_workers::Integer`: The requested number of worker to spawn
+- `max_workers::Integer`: The requested number of workers to spawn
 
 # Keywords
 
@@ -1028,7 +1028,7 @@ A cluster manager which spawns workers.
 # Arguments
 
 - `min_workers::Int`: The minimum number of workers to spawn or an exception is thrown
-- `max_workers::Int`: The number of requested workers to spawn
+- `max_workers::Int`: The requested number of workers to spawn
 
 # Keywords
 
