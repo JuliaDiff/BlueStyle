@@ -601,8 +601,8 @@ xy = foo(x, y=3)
     arr = [1, 2, 3,]
     ```
 
-- Triple-quotes use the indentation of the lowest indented line (excluding the opening triple-quote).
-  This means the closing triple-quote should be aligned to the least indented line in the string.
+- Triple-quotes and triple-backticks written over multiple lines should be indented.
+  As triple-quotes use the indentation of the lowest indented line (excluding the opening quotes) the least indented line in the string or ending quotes should be indented once.
   Triple-backticks should also follow this style even though the indentation does not matter for them.
 
     ```julia
@@ -611,20 +611,39 @@ xy = foo(x, y=3)
         hello
         world!
         """
-    str = """
-            hello
-        world!
-        """
     cmd = ```
         program
             --flag value
             parameter
         ```
+
     # No:
     str = """
-        hello
-        world!
+    hello
+    world!
     """
+    cmd = ```
+          program
+              --flag value
+              parameter
+          ```
+    ```
+
+- Assignments using triple-quotes or triple-backticks should have the opening quotes on the same line as the assignment operator.
+
+    ```julia
+    # Yes:
+    str2 = """
+           hello
+       world!
+       """
+
+    # No:
+    str2 =
+       """
+           hello
+       world!
+       """
     ```
 
 - Group similar one line statements together.
