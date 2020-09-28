@@ -602,7 +602,7 @@ xy = foo(x, y=3)
     ```
 
 - Triple-quotes and triple-backticks written over multiple lines should be indented.
-  Since triple-quotes use the indentation of the lowest indented line excluding the opening quotes, the least indented line in the string should be aligned with the closing quotes (i.e. also indented once).
+  As triple-quotes use the indentation of the lowest indented line (excluding the opening quotes) the least indented line in the string or ending quotes should be indented once.
   Triple-backticks should also follow this style even though the indentation does not matter for them.
 
     ```julia
