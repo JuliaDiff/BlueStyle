@@ -378,15 +378,21 @@ xy = foo(x, y=3)
 - Avoid extraneous whitespace immediately inside parentheses, square brackets or braces.
 
     ```julia
-    Yes: spam(ham[1], [eggs])
-    No:  spam( ham[ 1 ], [ eggs ] )
+    # Yes:
+    spam(ham[1], [eggs])
+    
+    # No:
+    spam( ham[ 1 ], [ eggs ] )
     ```
 
 - Avoid extraneous whitespace immediately before a comma or semicolon:
 
     ```julia
-    Yes: if x == 4 @show(x, y); x, y = y, x end
-    No:  if x == 4 @show(x , y) ; x , y = y , x end
+    # Yes:
+    if x == 4 @show(x, y); x, y = y, x end
+    
+    # No:
+    if x == 4 @show(x , y) ; x , y = y , x end
     ```
 
 - Avoid whitespace around `:` in ranges. Use brackets to clarify expressions on either side.
