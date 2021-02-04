@@ -170,6 +170,28 @@ import C
 using D: d
 ```
 
+### Function exports
+
+All functions that are intended to be part of the public API should be exported.
+All function exports should occur at the top of the main module file, after module imports.
+Avoid splitting a single export over multiple lines; either define one export per line, or group them by theme.
+
+```julia
+# Yes:
+export foo
+export bar
+export qux
+
+# Yes:
+export get_foo, get_bar
+export solve_foo, solve_bar
+
+# No:
+export foo,
+    bar,
+    qux
+```
+
 ### Global Variables
 
 Global variables should be avoided whenever possible. When required, global variables should be `const`s and have an all uppercase name seperated with underscores (e.g. `MY_CONSTANT`).
