@@ -171,7 +171,7 @@ import C
 using D: d
 ```
 
-### Function exports
+### Function Exports
 
 All functions that are intended to be part of the public API should be exported.
 All function exports should occur at the top of the main module file, after module imports.
