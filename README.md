@@ -38,6 +38,7 @@ When convention guidelines conflict this guide takes precedence (known conflicts
 ## Contents
 - [Code Formatting](#code-formatting)
     - [Module Imports](#module-imports)
+    - [Function Exports](#function-exports)
     - [Global Variables](#global-variables)
     - [Function Naming](#function-naming)
     - [Method Definitions](#method-definitions)
@@ -168,6 +169,28 @@ import A: a
 using B
 import C
 using D: d
+```
+
+### Function Exports
+
+All functions that are intended to be part of the public API should be exported.
+All function exports should occur at the top of the main module file, after module imports.
+Avoid splitting a single export over multiple lines; either define one export per line, or group them by theme.
+
+```julia
+# Yes:
+export foo
+export bar
+export qux
+
+# Yes:
+export get_foo, get_bar
+export solve_foo, solve_bar
+
+# No:
+export foo,
+    bar,
+    qux
 ```
 
 ### Global Variables
