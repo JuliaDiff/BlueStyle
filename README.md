@@ -38,6 +38,7 @@ When convention guidelines conflict this guide takes precedence (known conflicts
 ## Contents
 - [Code Formatting](#code-formatting)
     - [Module Imports](#module-imports)
+    - [Function Exports](#function-exports)
     - [Global Variables](#global-variables)
     - [Function Naming](#function-naming)
     - [Method Definitions](#method-definitions)
