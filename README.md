@@ -970,7 +970,7 @@ It is recommended that most modules, types and functions should have [docstrings
 That being said, only exported functions are required to be documented.
 Avoid documenting methods like `==` as the built in docstring for the function already covers the details well.
 Try to document a function and not individual methods where possible as typically all methods will have similar docstrings.
-If you are adding a method to a function which was defined in `Base` or another package only add a docstring if the behaviour of your function deviates from the existing docstring.
+If you are adding a method to a function which already has a docstring only add a docstring if the behaviour of your function deviates from the existing docstring.
 
 Docstrings are written in [Markdown](https://en.wikipedia.org/wiki/Markdown) and should be concise.
 Docstring lines should be wrapped at 92 characters.
