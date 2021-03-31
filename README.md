@@ -48,6 +48,7 @@ When convention guidelines conflict this guide takes precedence (known conflicts
     - [Numbers](#numbers)
     - [Ternary Operator](#ternary-operator)
     - [For loops](#for-loops)
+    - [Modules](#modules)
     - [Type annotation](#type-annotation)
     - [Package version specifications](#package-version-specifications)
     - [Comments](#comments)
@@ -845,6 +846,15 @@ end
 [foo(x) for x ∈ xs]
 ```
 
+### Modules
+
+Normally a file that includes the definition of a module, should not include any other code that runs outside that module.
+i.e. the module should be declared at the state of the file with the `module` keyword and ended at the end of the file.
+No other code before, or after (except for module docstring before).
+In this case the code with in the module block should **not** be indented.
+
+Sometimes, e.g. for tests, or for namespacing a enumeration, it *is* desirable to declare a submodule midway through a file.
+In this case the code within the submodule **should** be indented.
 
 ### Type annotation
 
