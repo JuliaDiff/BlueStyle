@@ -1198,7 +1198,7 @@ Then create or edit `.vim/after/ftplugin/julia.vim`, adding the Julia-specifc co
 " ~/.vim/after/ftplugin/julia.vim
 setlocal expandtab       " Replace tabs with spaces.
 setlocal textwidth=92    " Limit lines according to Julia's CONTRIBUTING guidelines.
-setlocal colorcolumn+=1  " Highlight first column beyond the line limit.
+setlocal colorcolumn=+1  " Highlight first column beyond the line limit.
 ```
 
 Additionally, you may find is useful to use the
