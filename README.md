@@ -862,7 +862,7 @@ Annotations for function definitions should be as general as possible.
 
 ```julia
 # Yes:
-splicer(arr::AbstractArray, step::Integer) = arr[1:step:end]
+splicer(arr::AbstractArray, step::Integer) = arr[begin:step:end]
 
 # No:
 splicer(arr::Array{Int}, step::Int) = arr[1:step:end]
