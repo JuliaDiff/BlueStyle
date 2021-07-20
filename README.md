@@ -865,7 +865,7 @@ Annotations for function definitions should be as general as possible.
 splicer(arr::AbstractArray, step::Integer) = arr[begin:step:end]
 
 # No:
-splicer(arr::Array{Int}, step::Int) = arr[1:step:end]
+splicer(arr::Array{Int}, step::Int) = arr[begin:step:end]
 ```
 
 Using as generic types as possible allows for a variety of inputs and allows your code to be more general:
