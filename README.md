@@ -874,7 +874,7 @@ Using as generic types as possible allows for a variety of inputs and allows you
 julia> splicer(1:10, 2)
 1:2:9
 
-julia> splicer([3.0,5,7,9], 2)
+julia> splicer([3.0, 5, 7, 9], 2)
 2-element Array{Float64,1}:
  3.0
  7.0
