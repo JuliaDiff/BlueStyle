@@ -544,7 +544,7 @@ xy = foo(x, y=3)
     arr = [
         1, 2, 3,
     ]
-    result = Function(
+    result = func(
         arg1,
         arg2,
     )
@@ -612,7 +612,7 @@ xy = foo(x, y=3)
         2,
         3,
     ]
-    result = Function(
+    result = func(
         arg1,
         arg2,
     )
@@ -624,7 +624,7 @@ xy = foo(x, y=3)
         2,
         3
     ]
-    result = Function(
+    result = func(
         arg1,
         arg2
     )
