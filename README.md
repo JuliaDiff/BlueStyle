@@ -853,7 +853,7 @@ i.e. the module should be declared at the top of the file with the `module` keyw
 No other code before, or after (except for module docstring before).
 In this case the code with in the module block should **not** be indented.
 
-Sometimes, e.g. for tests, or for namespacing a enumeration, it *is* desirable to declare a submodule midway through a file.
+Sometimes, e.g. for tests, or for namespacing an enumeration, it *is* desirable to declare a submodule midway through a file.
 In this case the code within the submodule **should** be indented.
 
 ### Type annotation
