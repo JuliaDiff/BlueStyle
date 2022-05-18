@@ -363,7 +363,7 @@ end
 
 # No: Because the separate line is more than 110 characters.
 function foobar(
-    df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString; prefix::AbstractString="", foobar::AbstractString=""
+    df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString; prefix::AbstractString="", postfix::AbstractString=""
 )
     # code
 end
@@ -993,8 +993,8 @@ Docstring lines should be wrapped at 110 characters.
 """
     bar(x[, y])
 
-Compute the Bar index between `x` and `y`. If `y` is missing, compute the Bar index between
-all pairs of columns of `x`.
+Compute the Bar index between `x` and `y`. If `y` is missing, compute the Bar index between all pairs of
+columns of `x`.
 """
 function bar(x, y) ...
 ```
@@ -1111,8 +1111,8 @@ Avoid aligning the text to the `:`.
 ...
 
 # Keywords
-- `definition::AbstractString`: Name of the job definition to use. Defaults to the
-    definition used within the current instance.
+- `definition::AbstractString`: Name of the job definition to use. Defaults to the definition used within the
+    current instance.
 """
 ```
 
@@ -1201,7 +1201,7 @@ Then create or edit `.vim/after/ftplugin/julia.vim`, adding the Julia-specifc co
 ```
 " ~/.vim/after/ftplugin/julia.vim
 setlocal expandtab       " Replace tabs with spaces.
-setlocal textwidth=110    " Limit lines according to Julia's CONTRIBUTING guidelines.
+setlocal textwidth=110   " Limit lines according to Julia's CONTRIBUTING guidelines.
 setlocal colorcolumn=+1  " Highlight first column beyond the line limit.
 ```
 
