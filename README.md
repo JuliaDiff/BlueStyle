@@ -196,7 +196,7 @@ export foo,
 
 ### Global Variables
 
-Global variables should be avoided whenever possible. When required, global variables should be `const`s and have an all uppercase name seperated with underscores (e.g. `MY_CONSTANT`).
+Global variables should be avoided whenever possible. When required, global variables should be `const`s and have an all uppercase name separated with underscores (e.g. `MY_CONSTANT`).
 They should be defined at the top of the file, immediately after imports and exports but before an `__init__` function.
 If you truly want mutable global style behaviour you may want to look into mutable containers or closures.
 
