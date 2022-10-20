@@ -568,7 +568,7 @@ xy = foo(x, y=3)
         ]
     ```
 
-- Nested array or tuples that are in expanded notation should have the opening and closing brackets at the same indentation level:
+- Nested arrays or tuples that are in expanded notation should have the opening and closing brackets at the same indentation level:
 
     ```julia
     # Yes:
