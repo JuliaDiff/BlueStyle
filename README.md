@@ -1192,7 +1192,7 @@ set shiftwidth=4    " Determine the results of >>, <<, and ==.
 autocmd BufRead,BufNewFile *.jl set filetype=julia
 ```
 
-Then create or edit `.vim/after/ftplugin/julia.vim`, adding the Julia-specifc configuration:
+Then create or edit `.vim/after/ftplugin/julia.vim`, adding the Julia-specific configuration:
 
 ```
 " ~/.vim/after/ftplugin/julia.vim
