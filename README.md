@@ -5,7 +5,7 @@
 This document specifies style conventions for Julia code.
 These conventions were created from a variety of sources including Python's [PEP8](http://legacy.python.org/dev/peps/pep-0008/), Julia's [Notes for Contributors](https://github.com/JuliaLang/julia/blob/master/CONTRIBUTING.md), and Julia's [Style Guide](https://docs.julialang.org/en/v1/manual/style-guide/).
 
-*Read this in other languages: [English](README.md), [简体中文](README.zh-cn.md)
+*Read this in other languages: [English](README.md), [简体中文](README.zh-cn.md)*
 
 ## A Word on Consistency
 

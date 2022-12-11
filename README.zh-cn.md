@@ -4,7 +4,7 @@
 
 本文档指定了Julia代码的编程风格惯例。这些惯例的说明参考了包括Python的[PEP8](http://legacy.python.org/dev/peps/pep-0008/), Julia的[Notes for Contributors](https://github.com/JuliaLang/julia/blob/master/CONTRIBUTING.md)以及Julia的[Style Guide](https://docs.julialang.org/en/v1/manual/style-guide/)在内的多种来源。
 
-*其他语言版本: [English](README.md), [简体中文](README.zh-cn.md)
+*其他语言版本: [English](README.md), [简体中文](README.zh-cn.md)*
 
 ## 关于一致性
 
