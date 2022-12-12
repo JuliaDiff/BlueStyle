@@ -2,7 +2,7 @@
 
 [![Code Style: Blue](https://img.shields.io/badge/code%20style-blue-4495d1.svg)](https://github.com/invenia/BlueStyle)
 
-本文档指定了Julia代码的编程风格惯例。这些惯例的说明参考了包括Python的[PEP8](http://legacy.python.org/dev/peps/pep-0008/), Julia的[Notes for Contributors](https://github.com/JuliaLang/julia/blob/master/CONTRIBUTING.md)以及Julia的[Style Guide](https://docs.julialang.org/en/v1/manual/style-guide/)在内的多种来源。
+本文档指定了Julia代码的编程风格惯例。这些惯例的说明参考了包括Python的[PEP8](http://legacy.python.org/dev/peps/pep-0008/), Julia的[Notes for Contributors](https://github.com/JuliaLang/julia/blob/master/CONTRIBUTING.md)以及Julia的[代码风格指南](https://docs.juliacn.com/latest/manual/style-guide/)在内的多种来源。
 
 *其他语言版本: [English](README.md), [简体中文](README.zh-cn.md)*
 
@@ -46,13 +46,13 @@
 
 ## 简介
 
-请尝试同时遵循 [Julia贡献指南(Julia Contribution Guidelines)](https://github.com/JuliaLang/julia/blob/master/CONTRIBUTING.md#general-formatting-guidelines-for-julia-code-contributions)， [Julia风格指南(Julia Style Guide)](https://docs.julialang.org/en/v1/manual/style-guide/)以及本指南。
+请尝试同时遵循 [Julia贡献指南](https://github.com/JuliaLang/julia/blob/master/CONTRIBUTING.md#general-formatting-guidelines-for-julia-code-contributions)， [Julia风格指南](https://docs.juliacn.com/latest/manual/style-guide/)以及本指南。
 
 如有冲突以本指南优先（已知的冲突将会在本指南中注明）。
 
 - 每层缩进使用4个空格，不要使用 `tab`。
 - 尝试遵守每行92字母的长度限制。
-- [模块](https://docs.julialang.org/en/v1/manual/modules/)和[类型](https://docs.julialang.org/en/v1/manual/types/)使用大驼峰式命名法。
+- [模块](https://docs.juliacn.com/latest/manual/modules/)和[类型](https://docs.juliacn.com/latest/manual/types/)使用大驼峰式命名法。
 - 方法名使用带下划线的小写（注：与此相反，[Julia的base库代码](https://github.com/JuliaLang/julia/tree/master/base)常常选择用不带下划线的小写。）
 - 使用`using`导入模块，每行一个模块并且尽量放在文件的前面。
 - 注释是好的，试着解释清楚代码的意图。
@@ -94,7 +94,7 @@
 
 ### 模块导入
 
-[模块导入](https://docs.julialang.org/en/v1/manual/modules/#Summary-of-module-usage-1) 应该放在文件最前面或者紧跟在 `module` 声明后面。
+[模块导入](https://docs.juliacn.com/latest/manual/modules/#namespace-management) 应该放在文件最前面或者紧跟在 `module` 声明后面。
 
 通过 `include` 加载的文件应该避免在其内指定模块导入，而应该将导入语句放在加载其的文件中（例如 "src/Example.jl" 或 "test/runtests.jl"）。
 
@@ -484,7 +484,7 @@ xy = foo(x, y=3)
     ```
 
 
-- 在大多数二进制运算符的两边各加一个空格：赋值(`=`), [更新运算符](https://docs.julialang.org/en/v1/manual/mathematical-operations/#Updating-operators-1) (`+=`, `-=`, 等等), [数值比较运算符](https://docs.julialang.org/en/v1/manual/mathematical-operations/#Numeric-Comparisons-1) (`==`, `<`, `>`, `！=`, 等等), [lambda运算符](https://docs.julialang.org/en/v1/manual/functions/#man-anonymous-functions-1) (`->`) 。可排除在本指南规范之外的二进制运算符包括：[范围运算符](https://docs.julialang.org/en/v1/base/math/#Base.::) (`:`), [有理数运算符](https://docs.julialang.org/en/v1/base/math/#Base.://) (`//`), [指数运算符](https://docs.julialang.org/en/v1/base/math/#Base.:^-Tuple{Number,Number}) (`^`), [可选参数/关键字](https://docs.julialang.org/en/v1/manual/functions/#Optional-Arguments-1) (例如：`f(x=1; y=2)`)。
+- 在大多数二进制运算符的两边各加一个空格：赋值(`=`), [更新运算符](https://docs.juliacn.com/latest/manual/mathematical-operations/#复合赋值运算符) (`+=`, `-=`, 等等), [数值比较运算符](https://docs.juliacn.com/latest/manual/mathematical-operations/#数值比较) (`==`, `<`, `>`, `！=`, 等等), [lambda运算符](https://docs.juliacn.com/latest/manual/functions/#man-anonymous-functions-1) (`->`) 。可排除在本指南规范之外的二进制运算符包括：[范围运算符](https://docs.julialang.org/en/v1/base/math/#Base.::) (`:`), [有理数运算符](https://docs.julialang.org/en/v1/base/math/#Base.://) (`//`), [指数运算符](https://docs.julialang.org/en/v1/base/math/#Base.:^-Tuple{Number,%20Number}) (`^`), [可选参数/关键字](https://docs.juliacn.com/latest/manual/functions/#可选参数) (例如：`f(x=1; y=2)`)。
 
     ```julia
     # Yes:
@@ -1008,7 +1008,7 @@ p = 1  # Number of nodes to predict. Again, an issue with the workflow order. Sh
 
 ### 文档
 
-大多数模块、类型和函数都应该有[docstring](http://docs.julialang.org/en/v1/manual/documentation/)。
+大多数模块、类型和函数都应该有[docstring](http://docs.juliacn.com/latest/manual/documentation/)。
 话虽如此，只有被导出的函数才需要有文档。
 避免为像 `==` 这样的方法写文档，因为该函数的内置docstring已经很好地涵盖了相关细节。
 尽量为函数而不是单个方法写文档，因为通常所有的方法都有类似的docstring。
@@ -1144,7 +1144,7 @@ function Manager end
 """
 ```
 
-关于在Julia关于文档书写的其他细节，请参见[官方文档](https://docs.julialang.org/en/v1/manual/documentation/)。
+关于在Julia关于文档书写的其他细节，请参见[官方文档](https://docs.juliacn.com/latest/manual/documentation/)。
 
 
 对于写在Markdown文件中的文档，如`README.md`或`docs/src/index.md`，保持每行一句话。
@@ -1181,7 +1181,7 @@ end
 
 ## 性能和优化
 
-下面这些tips中的一些可以在Julia的[性能提示](https://docs.julialang.org/en/v1/manual/performance-tips/)中找到。
+下面这些建议中的一些可以在Julia的[性能建议](https://docs.juliacn.com/latest/manual/performance-tips/)中找到。
 
 Julia的性能提升主要来自于它能够根据函数的输入类型对函数进行特化处理。
 将变量和功能放在全局命名空间或模块的命名空间中会阻碍这一点。
