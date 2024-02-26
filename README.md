@@ -1,6 +1,6 @@
 # Blue: a Style Guide for Julia
 
-[![Code Style: Blue](https://img.shields.io/badge/code%20style-blue-4495d1.svg)](https://github.com/invenia/BlueStyle)
+[![Code Style: Blue](https://img.shields.io/badge/code%20style-blue-4495d1.svg)](https://github.com/JuliaDiff/BlueStyle)
 
 This document specifies style conventions for Julia code.
 These conventions were created from a variety of sources including Python's [PEP8](http://legacy.python.org/dev/peps/pep-0008/), Julia's [Notes for Contributors](https://github.com/JuliaLang/julia/blob/master/CONTRIBUTING.md), and Julia's [Style Guide](https://docs.julialang.org/en/v1/manual/style-guide/).
@@ -1239,7 +1239,7 @@ Additionally you may find the [Julia VS-Code plugin](https://github.com/julia-vs
 
 Let contributors know your project is following the Blue style guide by adding the badge to your `README.md`.
 ```md
-[![Code Style: Blue](https://img.shields.io/badge/code%20style-blue-4495d1.svg)](https://github.com/invenia/BlueStyle)
+[![Code Style: Blue](https://img.shields.io/badge/code%20style-blue-4495d1.svg)](https://github.com/JuliaDiff/BlueStyle)
 ```
 The badge is blue:
-[![Code Style: Blue](https://img.shields.io/badge/code%20style-blue-4495d1.svg)](https://github.com/invenia/BlueStyle)
+[![Code Style: Blue](https://img.shields.io/badge/code%20style-blue-4495d1.svg)](https://github.com/JuliaDiff/BlueStyle)
