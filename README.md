@@ -26,7 +26,7 @@ Attempt to follow both the [Julia Contribution Guidelines](https://github.com/Ju
 When convention guidelines conflict this guide takes precedence (known conflicts will be noted in this guide).
 
 - Use 4 spaces per indentation level, no tabs.
-- Try to adhere to a 92 character line length limit.
+- Try to adhere to a 110 character line length limit.
 - Use upper camel-case convention for [modules](https://docs.julialang.org/en/v1/manual/modules/) and [types](https://docs.julialang.org/en/v1/manual/types/).
 - Use lower case with underscores for method names (note: contrary to this, it is a common stylistic choice in the [Julia base code](https://github.com/JuliaLang/julia/tree/master/base) to use lower case without underscores).
 - Import modules with `using`, with one module per line and at the top of the file when possible.
@@ -36,7 +36,11 @@ When convention guidelines conflict this guide takes precedence (known conflicts
 - Avoid padding brackets with spaces. ex. `Int64(value)` preferred over `Int64( value )`.
 
 ## Contents
-- [Code Formatting](#code-formatting)
+- [Blue: a Style Guide for Julia](#blue-a-style-guide-for-julia)
+  - [A Word on Consistency](#a-word-on-consistency)
+  - [Synopsis](#synopsis)
+  - [Contents](#contents)
+  - [Code Formatting](#code-formatting)
     - [Module Imports](#module-imports)
     - [Function Exports](#function-exports)
     - [Global Variables](#global-variables)
@@ -53,16 +57,16 @@ When convention guidelines conflict this guide takes precedence (known conflicts
     - [Package version specifications](#package-version-specifications)
     - [Comments](#comments)
     - [Documentation](#documentation)
-- [Test Formatting](#test-formatting)
+  - [Test Formatting](#test-formatting)
     - [Testsets](#testsets)
     - [Comparisons](#comparisons)
-- [Performance and Optimization](#performance-and-optimization)
-- [Editor Configuration](#editor-configuration)
+  - [Performance and Optimization](#performance-and-optimization)
+  - [Editor Configuration](#editor-configuration)
     - [Sublime Text Settings](#sublime-text-settings)
     - [Vim Settings](#vim-settings)
     - [Atom Settings](#atom-settings)
     - [VS-Code Settings](#vs-code-settings)
-- [Code Style Badge](#code-style-badge)
+  - [Code Style Badge](#code-style-badge)
 
 ## Code Formatting
 
@@ -282,7 +286,7 @@ function maybe_do_thing()
 end
 ```
 
-Functions definitions with parameter lines which exceed 92 characters should separate each parameter by a newline and indent by one-level:
+Functions definitions with parameter lines which exceed 110 characters should separate each parameter by a newline and indent by one-level:
 
 ```julia
 # Yes:
@@ -328,7 +332,7 @@ function foobar(
 end
 ```
 
-If all of the arguments fit inside the 92 character limit then you can place them on 1 line.
+If all of the arguments fit inside the 110 character limit then you can place them on 1 line.
 Similarly, you can follow the same rule if you break up positional and keyword arguments
 across two lines.
 
@@ -357,9 +361,9 @@ function foobar(
     # code
 end
 
-# No: Because the separate line is more than 92 characters.
+# No: Because the separate line is more than 110 characters.
 function foobar(
-    df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString; prefix::AbstractString=""
+    df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString; prefix::AbstractString="", postfix::AbstractString=""
 )
     # code
 end
@@ -372,7 +376,7 @@ function foobar(
     # code
 end
 
-# No: The kwargs are more than 92 characters.
+# No: The kwargs are more than 110 characters.
 function foobar(
     df::DataFrame, id::Symbol, variable::Symbol, value::AbstractString;
     prefix="I'm a long default setting that probably shouldn't exist", msg="I'm another long default settings that probably shouldn't exist",
@@ -404,7 +408,7 @@ xy = foo(x, y=3)
     ```julia
     # Yes:
     spam(ham[1], [eggs])
-    
+
     # No:
     spam( ham[ 1 ], [ eggs ] )
     ```
@@ -414,7 +418,7 @@ xy = foo(x, y=3)
     ```julia
     # Yes:
     if x == 4 @show(x, y); x, y = y, x end
-    
+
     # No:
     if x == 4 @show(x , y) ; x , y = y , x end
     ```
@@ -983,14 +987,14 @@ Try to document a function and not individual methods where possible as typicall
 If you are adding a method to a function which already has a docstring only add a docstring if the behaviour of your function deviates from the existing docstring.
 
 Docstrings are written in [Markdown](https://en.wikipedia.org/wiki/Markdown) and should be concise.
-Docstring lines should be wrapped at 92 characters.
+Docstring lines should be wrapped at 110 characters.
 
 ```julia
 """
     bar(x[, y])
 
-Compute the Bar index between `x` and `y`. If `y` is missing, compute the Bar index between
-all pairs of columns of `x`.
+Compute the Bar index between `x` and `y`. If `y` is missing, compute the Bar index between all pairs of
+columns of `x`.
 """
 function bar(x, y) ...
 ```
@@ -1099,7 +1103,7 @@ function Manager end
 
 ```
 
-If the documentation for bullet-point exceeds 92 characters the line should be wrapped and slightly indented.
+If the documentation for bullet-point exceeds 110 characters the line should be wrapped and slightly indented.
 Avoid aligning the text to the `:`.
 
 ```julia
@@ -1107,8 +1111,8 @@ Avoid aligning the text to the `:`.
 ...
 
 # Keywords
-- `definition::AbstractString`: Name of the job definition to use. Defaults to the
-    definition used within the current instance.
+- `definition::AbstractString`: Name of the job definition to use. Defaults to the definition used within the
+    current instance.
 """
 ```
 
@@ -1174,7 +1178,7 @@ Then navigate to: `Preferences > Settings - More > Syntax Specific - User`
     "tab_size": 4,
     "trim_trailing_white_space_on_save": true,
     "ensure_newline_at_eof_on_save": true,
-    "rulers": [92]
+    "rulers": [110]
 }
 ```
 
@@ -1197,7 +1201,7 @@ Then create or edit `.vim/after/ftplugin/julia.vim`, adding the Julia-specific c
 ```
 " ~/.vim/after/ftplugin/julia.vim
 setlocal expandtab       " Replace tabs with spaces.
-setlocal textwidth=92    " Limit lines according to Julia's CONTRIBUTING guidelines.
+setlocal textwidth=110   " Limit lines according to Julia's CONTRIBUTING guidelines.
 setlocal colorcolumn=+1  " Highlight first column beyond the line limit.
 ```
 
@@ -1207,12 +1211,12 @@ which adds Julia-aware syntax highlighting and a few cool other features.
 
 ### Atom Settings
 
-Atom defaults preferred line length to 80 characters. We want that at 92 for julia.
+Atom defaults preferred line length to 80 characters. We want that at 110 for julia.
 To change it:
 
 1. Go to `Atom -> Preferences -> Packages`.
 2. Search for the "language-julia" package and open the settings for it.
-3. Find preferred line length (under "Julia Grammar") and change it to 92.
+3. Find preferred line length (under "Julia Grammar") and change it to 110.
 
 
 ### VS-Code Settings
@@ -1229,7 +1233,7 @@ To modify these settings open your VS Code Settings with <kbd>CMD</kbd>+<kbd>,</
         "files.insertFinalNewline": true,
         "files.trimFinalNewlines": true,
         "files.trimTrailingWhitespace": true,
-        "editor.rulers": [92],
+        "editor.rulers": [110],
     },
 }
 ```
