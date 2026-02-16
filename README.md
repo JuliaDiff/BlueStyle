@@ -282,7 +282,7 @@ function maybe_do_thing()
 end
 ```
 
-Functions definitions with parameter lines which exceed 92 characters should separate each parameter by a newline and indent by one-level:
+Function definitions with parameter lines which exceed 92 characters should separate each parameter by a newline and indent by one-level:
 
 ```julia
 # Yes:
